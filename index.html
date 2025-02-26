@@ -1764,11 +1764,11 @@ header {
     </footer>
 
     <script>
-                function getUserFromURL() {
+        function getUserFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("user");
+    return params.get("username");
         }
-        const username = getUserFromURL();
+        const username = getUsernameFromURL();
         const scripts = {
             APB: [
                 { tipo: 'titulo', texto: "INTRODUÇÃO" },
