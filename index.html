@@ -24,8 +24,6 @@
             width: 100%;
             box-sizing: border-box;
             animation: Entrad 1.1s ease-out forwards;
-            position: relative;
-            z-index: 0;
     }
 
     body:not([data-theme]) {
@@ -858,6 +856,15 @@
     display: none;
 }
 
+[data-theme="grifinoria"] .bandeira,
+[data-theme="corvinal"] .bandeira,
+[data-theme="sonserina"] .bandeira,
+[data-theme="lufa-lufa"] .bandeira {
+    position: fixed;
+    z-index: -3;
+    opacity: 0.5;
+}
+
 [data-theme="grifinoria"] .bandeira.grifinoria1,
 [data-theme="grifinoria"] .bandeira.grifinoria2,
 [data-theme="grifinoria"] .bandeira.grifinoria3,
@@ -869,6 +876,18 @@
 [data-theme="grifinoria"] .bandeira.grifinoria2 { top: 10px; right: 10px; }
 [data-theme="grifinoria"] .bandeira.grifinoria3 { bottom: 10px; left: 10px; }
 [data-theme="grifinoria"] .bandeira.grifinoria4 { bottom: 10px; right: 10px; }
+
+[data-theme="grifinoria"] .descricao {
+    color: #bc0000;
+}
+
+[data-theme="grifinoria"] .bot-link {
+    background-color: #900000;
+}
+
+[data-theme="grifinoria"] .bot-link:hover {
+    background-color: #9b9b00;
+}
 
 [data-theme="grifinoria"], 
 [data-theme="grifinoria"] body {
@@ -955,6 +974,18 @@
     min-height: 100vh;
 }
 
+[data-theme="sonserina"] .descricao {
+    color: #206500;
+}
+
+[data-theme="sonserina"] .bot-link {
+    background-color: #006a15;
+}
+
+[data-theme="sonserina"] .bot-link:hover {
+    background-color: #00851b;
+}
+
 [data-theme="sonserina"] .copy-btn {
     background-color: #2A623D;
 }
@@ -1033,6 +1064,18 @@
     min-height: 100vh;
 }
 
+[data-theme="lufa-lufa"] .descricao {
+    color: #7e9703;
+}
+
+[data-theme="lufa-lufa"] .bot-link {
+    background-color: #ECB939;
+}
+
+[data-theme="lufa-lufa"] .bot-link:hover {
+    background-color: #f6cd65;
+}
+
 [data-theme="lufa-lufa"] .copy-btn {
     background-color: #ECB939;
 }
@@ -1109,6 +1152,18 @@
     background-color: #1e3053 !important;
     position: relative;
     min-height: 100vh;
+}
+
+[data-theme="corvinal"] .descricao {
+    color: #1c508c;
+}
+
+[data-theme="corvinal"] .bot-link {
+    background-color: #1c508c;
+}
+
+[data-theme="corvinal"] .bot-link:hover {
+    background-color: #236bbd;
 }
 
 [data-theme="corvinal"] .copy-btn {
@@ -1511,79 +1566,6 @@ header {
 
 .start-quiz-btn:hover {
     opacity: 0.9;
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-        margin: 10px auto;
-    }
-
-    .custom-select {
-        height: 50px;
-        padding: 0 10px;
-    }
-
-    .selected span {
-        font-size: 14px;
-    }
-
-    .select-items div {
-        padding: 12px 15px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .select-items img {
-        margin-bottom: 5px;
-    }
-
-    .desc-aula {
-        font-size: 10px;
-    }
-
-    #texto {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-    .copy-btn {
-        padding: 4px 6px;
-        font-size: 8px;
-    }
-
-    .btn-config {
-        bottom: 20px;
-        left: 20px;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-
-    .config-popup {
-        bottom: 80px;
-        left: 15px;
-        width: 90%;
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 360px) {
-    .selected span {
-        font-size: 12px;
-    }
-
-    .select-items div {
-        padding: 10px;
-    }
-
-    .titulo {
-        font-size: 14px;
-    }
-
-    .descricao {
-        font-size: 10px;
-    }
 }
 
     </style>
@@ -2734,19 +2716,20 @@ header {
     document.body.removeChild(tempInput);
 
     const textoElement = botao.previousElementSibling;
-
     const duracao = localStorage.getItem('realcePro') === 'true' ? 30 : 15;
+    
+    if (botao.intervalo) {
+        clearInterval(botao.intervalo);
+    }
 
     botao.textContent = `${duracao}s`;
-    botao.disabled = true;
 
     textoElement.classList.add('marcado');
-
     botao.classList.add('pop');
 
     let tempoRestante = duracao;
 
-    const intervalo = setInterval(() => {
+    botao.intervalo = setInterval(() => {
         tempoRestante--;
         botao.textContent = `${tempoRestante}s`;
 
