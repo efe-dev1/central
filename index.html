@@ -2754,12 +2754,10 @@ document.addEventListener("keydown", function(event) {
     }
   });
 
-if (getCookie('acessoPermitido') !== 'true' && document.referrer !== 'https://efe-central-de-aulas.vercel.app') {
-            document.body.innerHTML = '<h1>Acesso negado!</h1><p>Redirecionando você para o subfórum dos professores.</p>';
-            window.location.href = 'https://www.policiarcc.com/f276-efe-central-de-aulas';
-        } else {
-            document.cookie = "acessoPermitido=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
+if (getCookie('acessoPermitido') !== 'true' && !document.referrer.includes('https://www.policiarcc.com/f276-efe-central-de-aulas')) {
+    document.body.innerHTML = '<h1>Acesso negado!</h1><p>Redirecionando você para o subfórum dos professores.</p>';
+    window.location.href = 'https://www.policiarcc.com/f276-efe-central-de-aulas';
+}
 
         document.onkeydown = bloquearTeclas;
 
