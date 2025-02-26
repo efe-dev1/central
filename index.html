@@ -1763,16 +1763,11 @@ header {
     </footer>
 
     <script>
-        function getUsernameFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("username");
-        }
-        const userNameFromURL = getUserFromURL();
         const scripts = {
             APB: [
                 { tipo: 'titulo', texto: "INTRODUÇÃO" },
                 { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
-            { tipo: 'texto', texto: `Saudações, executivo! Sou o(a) professor(a) ${userNameFromURL} responsável em lhe aplicar a Aula de Praças Básica.` },
+            { tipo: 'texto', texto: 'Saudações, executivo! Sou o(a) professor(a) responsável em lhe aplicar a Aula de Praças Básica.' },
 { tipo: 'texto', texto: "Mantenha-se ativo, atento e em silêncio. Em caso de dúvidas, acene." },
 { tipo: 'texto', texto: "Tente anotar tudo o que será passado, pois você será testado." },
 { tipo: 'texto', texto: "Caso eu saia da sala, aguarde por 5 minutos. Se eu não voltar, retorne ao batalhão." },
