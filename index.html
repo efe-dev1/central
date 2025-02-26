@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Aulas</title>
+    <link rel="shortcut icon" href="https://www.habbo.com.br/habbo-imaging/badge/b09164s43131s50134s17113s171152f871e57c21d5c38fdf1c29c23d7a3b8.gif" type="image/gif">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to top, #25313a, #334e5d);
+            background-size: 100% 150%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            box-sizing: border-box;
+            animation: Entrad 1.1s ease-out forwards;
+    }
+
+    body:not([data-theme]) {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    body[data-theme] {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @keyframes Entrad {
+      from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #81a5b8;
+        } 
+
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+            margin-bottom: -45px;
+        }
+
+        header img {
+            max-width: 80%;
+            display: block;
+            margin: -15px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header img:hover {
+            transform: scale(1.05); 
+            filter: brightness(1.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 12px;
+            color: #000;
+            box-sizing: border-box;
+        }
+
+        #texto {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #dedede;
+            border-radius: 20px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            background-color: #fff;
+            color: #333;
+            display: none;
+            text-align: left;
+        }
+
+        .copy-btn {
+            font-family: 'Poppins', sans-serif;
+            background-color: #3d5b71;
+            color: white;
+            padding: 5px 7px;
+            border-radius: 8px 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 9px;
+            margin-left: 2px;
+            margin-top: -4px;
+            margin-bottom: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .copy-btn.pop {
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+        .copy-btn:hover {
+            background-color: #334e5d;
+            transform: scale(0.97);
+        }
+
+        .descricao {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            color: #5b859e;
+            font-size: 11px;
+        }
+
+        .titulo {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+        }
+
+        #creditos {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        #creditos p {
+            margin: 5px 0;
+        }
+
+        #creditos a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            header img {
+                max-width: 55%;
+                margin: -10px auto;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            #texto {
+                padding: 10px;
+                font-size: 10px;
+            }
+
+            .copy-btn {
+                font-size: 8px;
+            }
+        }
+
+        @media (max-width: 480px) and (orientation: landscape) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            header img {
+                max-width: 45%;
+                margin: -10px auto;
+            }
+
+            #texto {
+                font-size: 10px;
+                padding: 10px;
+            }
+
+            .copy-btn {
+                font-size: 8px;
+            }
+        }
+
+        #aviso {
+            position: fixed;
+            bottom: 10px;
+            right: 70px;
+            background-color: #f8f8ff;
+            border: 2px solid #dedede;
+            color: #050505;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 300px;
+            font-size: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.5s ease;
+        }
+
+        #aviso button {
+            position: absolute;
+            top: 7px;
+            right: 9px;
+            background: none;
+            border: none;
+            color: rgb(136, 136, 136);
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        #aviso button:hover {
+            color: rgb(174, 0, 0);
+        }
+
+        #aviso.closing {
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .bot-link {
+            font-family: 'Poppins', sans-serif;
+            background-color: #81a5b8;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 9px;
+            margin-left: 2px;
+        }
+
+        .bot-link:hover {
+            background-color: darkcyan;
+        }
+
+        .bot-link:active {
+            background-color: darkcyan;
+        }
+
+        .custom-select {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            background: #fff;
+            border: 2px solid #dedede;
+            border-radius: 20px 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            padding: 0 15px;
+            cursor: pointer;
+        }
+
+        .custom-select select {
+            display: none;
+        }
+
+        .select-items {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: -1;
+            width: 100%;
+            background-color: #fff;
+            border: 2px solid #dedede;
+            border-top: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .select-items div {
+            padding: 14px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.15s ease, filter 0.15s ease, color 0.15s ease;
+        }
+
+        .select-items div:hover {
+            background-color: #d0e3ee;
+            filter: brightness(1.1);
+            color: #81a5b8;
+        }
+
+        .select-items img {
+            margin-top: -10px;
+        }
+
+        .selected {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #fff;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .desc-aula {
+            font-size: 11px;
+            color: #555;
+            margin-top: 5px;
+            padding-left: 10px;
+            font-style: italic;
+            display: block;
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        input:checked ~ .spoiler-conteudo {
+            max-height: 100vh;
+            padding: 1em;
+        }
+
+        input:checked ~ .spoiler-label .seta {
+            transform: rotate(180deg);
+        }
+
+        .spoiler {
+            margin: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        .spoiler-label {
+            display: flex;
+            padding: 0.5em;
+            font-weight: bold;
+            cursor: pointer;
+            background: #334e5d;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .spoiler-label:active {
+            background: #5091ab;
+        }
+
+        .spoiler-conteudo {
+            max-height: 0;
+            padding: 0 1em;
+            background: white;
+            transition: all 0.35s;
+            transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .spoiler-conteudo::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 5px;
+        }
+
+        .spoiler-conteudo::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .spoiler-conteudo::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .spoiler-conteudo::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .spoiler-label .seta {
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .marcado {
+            background-color: #d3efff;
+            transition: background 0.3s;
+            padding: 0;
+            border-radius: 3px;
+        }
+
+        .habbo-decoracao {
+            position: fixed;
+            z-index: 1;
+            pointer-events: none;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+            transition: all 0.5s ease;
+        }
+
+        .decor-direita {
+            right: -280px;
+            bottom: -40px;
+            transform: rotate(-15deg) scaleX(-1);
+            z-index: 999;
+            animation: decorEnter 0.5s ease forwards;
+        }
+
+        @keyframes decorEnter {
+            from {
+                right: -280px;
+                opacity: 0;
+            }
+            to {
+                right: -70px;
+                opacity: 1;
+            }
+        }
+
+        .decor-direita.closing {
+            animation: decorSaida 0.5s ease forwards;
+        }
+
+        @keyframes decorSaida {
+            to {
+                right: -280px;
+                opacity: 0;
+                transform: rotate(345deg) scaleX(-1);
+            }
+        }
+
+        .btn-config {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: #7b7b7b;
+    border: 2px solid transparent;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 35px;
+    height: 35px;
+}
+
+.btn-config i {
+    transition: transform 2s ease;
+}
+
+.btn-config i.rotated {
+    transform: rotate(360deg);
+}
+
+.config-popup {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    left: 25px;
+    width: 340px;
+    background: linear-gradient(145deg, #424242, #2b2b2b);
+    border-radius: 15px;
+    z-index: 1001;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.41);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+}
+
+.config-popup.active {
+    display: block;
+    animation: fadeSlideIn 0.4s ease-out;
+}
+
+.config-header {
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    padding: 1px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-header i {
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: transform 2s ease;
+}
+
+.config-header i:hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+}
+
+.config-content {
+    padding: 15px;
+}
+
+.tema-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tema-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tema-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    margin-right: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tema-preview.classico {
+    background: linear-gradient(160deg, #6eb7d5, #5292ae);
+    border: 2px solid #008ca4;
+}
+
+.tema-preview.new {
+    background: linear-gradient(to top, #25313a, #334e5d);
+    border: 2px solid #174a54;
+}
+
+.tema-preview.ocean_prof {
+    background: linear-gradient(160deg, #121f28, #1e1e1e);
+    border: 2px solid #001f24;
+}
+
+.botao-maior .copy-btn {
+    padding: 6px 9px !important;
+    font-size: 10px !important;
+}
+
+.aviso-oculto {
+    display: none !important;
+}
+
+[data-theme="classico"], 
+[data-theme="new"], 
+[data-theme="ocean_prof"] {
+    header {
+        text-align: center;
+        margin-bottom: -45px;
+    }
+
+    header img {
+        max-width: 80%;
+        display: block;
+        margin: -15px auto;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    header img:hover {
+        transform: scale(1.05); 
+        filter: brightness(1.1);
+    }
+}
+
+[data-theme="classico"] {
+    background: linear-gradient(160deg, #6eb7d5, #5292ae);
+    color: #e0e0e0 !important;
+    background-size: 100% 150%;
+}
+
+[data-theme="classico"] .spoiler-label {
+    background-color: #6eb7d5;
+}
+
+[data-theme="classico"] .spoiler-label:active {
+    background-color: #5c98b0;
+}
+
+[data-theme="classico"] .copy-btn {
+    background-color: #6eb7d5;
+}
+
+[data-theme="classico"] .copy-btn:hover {
+    background-color: #5292ae;
+}
+
+[data-theme="new"] {
+    background: linear-gradient(to top, #25313a, #334e5d);
+    background-size: 100% 150%;
+}
+
+[data-theme="ocean_prof"] {
+    background: linear-gradient(160deg, #121f28, #1e1e1e) !important;
+    background-size: 100% 150%;
+}
+
+[data-theme="ocean_prof"] .spoiler-label {
+    background-color: #121f28;
+}
+
+[data-theme="ocean_prof"] .spoiler-label:active {
+    background-color: #1d4353;
+}
+
+[data-theme="ocean_prof"] .copy-btn {
+    background-color: #0e2535;
+}
+
+[data-theme="ocean_prof"] .copy-btn:hover {
+    background-color: #214253;
+}
+
+.checkbox-micro {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.checkbox-micro input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.checkbox-micro input {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-micro .checkmark {
+    position: relative;
+    width: 17px;
+    height: 17px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.checkbox-micro input:checked ~ .checkmark {
+    background: #00a8c6;
+    border-color: #2ac4dc;
+    animation: checkPop 0.3s ease;
+}
+
+.checkbox-micro .checkmark i {
+    font-size: 14px;
+    color: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.checkbox-micro input:checked ~ .checkmark i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes checkPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.theme-accordion {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.acessib-accordion {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.9em;
+}
+
+.theme-options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-size: 13px;
+}
+
+.acessib-options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    font-size: 13px;
+}
+
+.acessib-options.open {
+    max-height: 500px;
+}
+
+.theme-options.open {
+    max-height: 300px;
+}
+
+.arrow-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.fechar-popup {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: #393939;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+}
+
+.fechar-popup:hover {
+    background: #ff4d4d;
+}
+
+.fechar-popup:active {
+    transform: scale(0.9);
+}
+
+.fechar-popup::after {
+    content: '×';
+    font-size: 1.4em;
+    color: white;
+}
+
+.timer {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #64bdca;
+    transition: opacity 0.3s ease;
+}
+
+.hogwarts-sub-options {
+    padding-left: 20px;
+}
+
+.tema-preview.harry-potter {
+    background: linear-gradient(135deg, 
+        #2c3e50 25%,
+        #34495e 25%, #34495e 50%,
+        #8e44ad 50%, #8e44ad 75%,
+        #2c3e50 75%
+    );
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #f1c40f;
+}
+
+.tema-preview.harry-potter::before {
+    content: "\f530";
+    font-size: 24px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+.bandeira {
+    display: none;
+}
+
+[data-theme="grifinoria"] .bandeira.grifinoria1,
+[data-theme="grifinoria"] .bandeira.grifinoria2,
+[data-theme="grifinoria"] .bandeira.grifinoria3,
+[data-theme="grifinoria"] .bandeira.grifinoria4 {
+    display: block;
+}
+
+[data-theme="grifinoria"] .bandeira.grifinoria1 { top: 10px; left: 10px; }
+[data-theme="grifinoria"] .bandeira.grifinoria2 { top: 10px; right: 10px; }
+[data-theme="grifinoria"] .bandeira.grifinoria3 { bottom: 10px; left: 10px; }
+[data-theme="grifinoria"] .bandeira.grifinoria4 { bottom: 10px; right: 10px; }
+
+[data-theme="grifinoria"], 
+[data-theme="grifinoria"] body {
+    background-color: #5a0000 !important;
+    position: relative;
+    min-height: 100vh;
+}
+
+[data-theme="grifinoria"] .copy-btn {
+    background-color: #700000;
+}
+
+[data-theme="grifinoria"] .copy-btn:hover {
+    background-color: #c1b732;
+}
+
+[data-theme="grifinoria"] .spoiler-label {
+    background-color: #922414;
+}
+
+[data-theme="grifinoria"] .spoiler-label:active {
+    background-color: #6e1a0d;
+}
+
+[data-theme="grifinoria"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #7d2323;
+    z-index: -2;
+}
+
+[data-theme="grifinoria"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, #ECB939 25%, transparent 25%),
+        linear-gradient(-45deg, #ECB939 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ECB939 75%),
+        linear-gradient(-45deg, transparent 75%, #ECB939 75%);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+[data-theme="grifinoria"] .bandeira {
+    display: block;
+    position: fixed;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
+
+[data-theme="grifinoria"] header img {
+    max-width: 45%;
+    display: block;
+    margin: -15px auto;
+    transition: transform 0.3s ease-in-out;
+    }
+
+[data-theme="sonserina"] .bandeira.sonserina1,
+[data-theme="sonserina"] .bandeira.sonserina2,
+[data-theme="sonserina"] .bandeira.sonserina3,
+[data-theme="sonserina"] .bandeira.sonserina4 {
+    display: block;
+}
+
+[data-theme="sonserina"] .bandeira.sonserina1 { top: 10px; left: 10px; }
+[data-theme="sonserina"] .bandeira.sonserina2 { top: 10px; right: 10px; }
+[data-theme="sonserina"] .bandeira.sonserina3 { bottom: 10px; left: 10px; }
+[data-theme="sonserina"] .bandeira.sonserina4 { bottom: 10px; right: 10px; }
+
+[data-theme="sonserina"], 
+[data-theme="sonserina"] body {
+    background-color: #215131 !important;
+    position: relative;
+    min-height: 100vh;
+}
+
+[data-theme="sonserina"] .copy-btn {
+    background-color: #2A623D;
+}
+
+[data-theme="sonserina"] .copy-btn:hover {
+    background-color: #1b492b;
+}
+
+[data-theme="sonserina"] .spoiler-label {
+    background-color: #2A623D;
+}
+
+[data-theme="sonserina"] .spoiler-label:active {
+    background-color: #1c4a2b;
+}
+
+[data-theme="sonserina"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d2815;
+    z-index: -2;
+}
+
+[data-theme="sonserina"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, #246439 25%, transparent 25%),
+        linear-gradient(-45deg, #246439 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #246439 75%),
+        linear-gradient(-45deg, transparent 75%, #246439 75%);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+[data-theme="sonserina"] .bandeira {
+    display: block;
+    position: fixed;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
+
+[data-theme="sonserina"] header img {
+    max-width: 45%;
+    display: block;
+    margin: -15px auto;
+    transition: transform 0.3s ease-in-out;
+    }
+
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa1,
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa2,
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa3,
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa4 {
+    display: block;
+}
+
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa1 { top: 10px; left: 10px; }
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa2 { top: 10px; right: 10px; }
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa3 { bottom: 10px; left: 10px; }
+[data-theme="lufa-lufa"] .bandeira.lufa-lufa4 { bottom: 10px; right: 10px; }
+
+[data-theme="lufa-lufa"], 
+[data-theme="lufa-lufa"] body {
+    background-color: #bd952f !important;
+    position: relative;
+    min-height: 100vh;
+}
+
+[data-theme="lufa-lufa"] .copy-btn {
+    background-color: #ECB939;
+}
+
+[data-theme="lufa-lufa"] .copy-btn:hover {
+    background-color: #f6cd65;
+}
+
+[data-theme="lufa-lufa"] .spoiler-label {
+    background-color: #f1c860;
+}
+
+[data-theme="lufa-lufa"] .spoiler-label:active {
+    background-color: #9c7e33;
+}
+
+[data-theme="lufa-lufa"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9c7a25;
+    z-index: -2;
+}
+
+[data-theme="lufa-lufa"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, #ECB939 25%, transparent 25%),
+        linear-gradient(-45deg, #ECB939 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ECB939 75%),
+        linear-gradient(-45deg, transparent 75%, #ECB939 75%);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+[data-theme="lufa-lufa"] .bandeira {
+    display: block;
+    position: fixed;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
+
+[data-theme="lufa-lufa"] header img {
+    max-width: 45%;
+    display: block;
+    margin: -15px auto;
+    transition: transform 0.3s ease-in-out;
+    }
+
+[data-theme="corvinal"] .bandeira.corvinal1,
+[data-theme="corvinal"] .bandeira.corvinal2,
+[data-theme="corvinal"] .bandeira.corvinal3,
+[data-theme="corvinal"] .bandeira.corvinal4 {
+    display: block;
+}
+
+[data-theme="corvinal"] .bandeira.corvinal1 { top: 10px; left: 10px; }
+[data-theme="corvinal"] .bandeira.corvinal2 { top: 10px; right: 10px; }
+[data-theme="corvinal"] .bandeira.corvinal3 { bottom: 10px; left: 10px; }
+[data-theme="corvinal"] .bandeira.corvinal4 { bottom: 10px; right: 10px; }
+
+[data-theme="corvinal"], 
+[data-theme="corvinal"] body {
+    background-color: #1e3053 !important;
+    position: relative;
+    min-height: 100vh;
+}
+
+[data-theme="corvinal"] .copy-btn {
+    background-color: #2e4087;
+}
+
+[data-theme="corvinal"] .copy-btn:hover {
+    background-color: #213069;
+}
+
+[data-theme="corvinal"] .spoiler-label {
+    background-color: #2e4087;
+}
+
+[data-theme="corvinal"] .spoiler-label:active {
+    background-color: #303779;
+}
+
+[data-theme="corvinal"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #152341;
+    z-index: -2;
+}
+
+[data-theme="corvinal"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, #254586 25%, transparent 25%),
+        linear-gradient(-45deg, #254586 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #254586 75%),
+        linear-gradient(-45deg, transparent 75%, #254586 75%);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+[data-theme="corvinal"] .bandeira {
+    display: block;
+    position: fixed;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
+
+[data-theme="corvinal"] header img {
+    max-width: 45%;
+    display: block;
+    margin: -15px auto;
+    transition: transform 0.3s ease-in-out;
+    }
+
+header {
+    display: none;
+}
+
+[data-theme="classico"] header.classico,
+[data-theme="new"] header.classico,
+[data-theme="ocean_prof"] header.classico,
+[data-theme="grifinoria"] header.grifinoria,
+[data-theme="sonserina"] header.sonserina,
+[data-theme="lufa-lufa"] header.lufa-lufa,
+[data-theme="corvinal"] header.corvinal {
+    display: block;
+}
+
+[data-theme="lufa-lufa"] .bandeira,
+[data-theme="corvinal"] .bandeira,
+[data-theme="grifinoria"] .bandeira,
+[data-theme="sonserina"] .bandeira {
+    display: none;
+}
+
+.hogwarts-sub-options {
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+[data-theme="grifinoria"] .selected {
+    background-color: #fff;
+}
+
+[data-theme="sonserina"] .selected {
+    background-color: #fff;
+}
+
+[data-theme="lufa-lufa"] .selected {
+    background-color: #fff;
+}
+
+[data-theme="corvinal"] .selected {
+    background-color: #fff;
+}
+
+.casa-theme {
+    display: none;
+}
+
+.default-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+[data-theme="grifinoria"] .default-content,
+[data-theme="sonserina"] .default-content,
+[data-theme="lufa-lufa"] .default-content,
+[data-theme="corvinal"] .default-content {
+    display: none;
+}
+
+[data-theme="classico"] .default-content,
+[data-theme="new"] .default-content,
+[data-theme="ocean_prof"] .default-content {
+    display: flex !important;
+}
+
+[data-theme="grifinoria"] .grifinoria-content,
+[data-theme="sonserina"] .sonserina-content,
+[data-theme="lufa-lufa"] .lufa-lufa-content,
+[data-theme="corvinal"] .corvinal-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+[data-theme] .default-content {
+    display: none;
+}
+
+.selected span {
+    font-weight: 500;
+}
+
+[data-theme="grifinoria"] .selected span {
+    text-shadow: 0 1px 2px rgba(174,0,0,0.2);
+}
+
+[data-theme="sonserina"] .selected span {
+    text-shadow: 0 1px 2px rgba(42,98,61,0.2);
+}
+
+[data-theme="lufa-lufa"] .selected span {
+    text-shadow: 0 1px 2px rgba(236,185,57,0.2);
+}
+
+[data-theme="corvinal"] .selected span {
+    text-shadow: 0 1px 2px rgba(14,26,64,0.2);
+}
+
+[data-theme="grifinoria"] .btn-config {
+    background-color: #740001;
+}
+
+[data-theme="sonserina"] .btn-config {
+    background-color: #1c4d10;
+}
+
+[data-theme="corvinal"] .btn-config {
+    background-color: #202a6e;
+}
+
+[data-theme="lufa-lufa"] .btn-config {
+    background-color: #b2b230;
+}
+
+[data-theme="grifinoria"],
+[data-theme="sonserina"],
+[data-theme="lufa-lufa"],
+[data-theme="corvinal"] {
+    #creditos {
+        font-family: 'MedievalSharp', cursive;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 13px;
+        color: #fff;
+        }
+
+    #creditos p {
+        margin: 5px 0;
+        }
+
+    #creditos a {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        }
+}
+
+.selected img {
+    margin-left: 10px;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
+}
+
+#hat-quiz {
+    font-family: 'MedievalSharp', cursive;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0a0a;
+    border: 2px solid #2c2c2c;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    font-family: 'Times New Roman', serif;
+}
+
+.hat-header {
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hat-image {
+    width: 100px;
+    filter: drop-shadow(0 0 5px #654321);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.hat-title {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 24px;
+    color: #c0a672;
+    text-shadow: 0 0 5px #654321;
+    margin: 10px 0;
+}
+
+.hat-question {
+    font-family: 'MedievalSharp', cursive;
+    color: #e0e0e0;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hat-answer {
+    font-family: 'MedievalSharp', cursive;
+    background: #1a1a1a;
+    border: 1px solid #2c2c2c;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.hat-answer:hover {
+    background: #2a2a2a;
+    border-color: #c0a672;
+}
+
+.answer-bullet {
+    font-family: 'MedievalSharp', cursive;
+    color: #c0a672;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.hat-result {
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+    padding: 20px;
+}
+
+.result-house {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 0 10px currentColor;
+    margin: 15px 0;
+}
+
+.result-description {
+    font-family: 'MedievalSharp', cursive;
+    color: #a0a0a0;
+    font-style: italic;
+    margin: 20px 0;
+    line-height: 1.4;
+}
+
+.accept-house {
+    font-family: 'MedievalSharp', cursive;
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.accept-house:hover {
+    background: #3c3c3c;
+}
+
+#hat-confirm {
+    font-family: 'MedievalSharp', cursive;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0a0a0a;
+    border: 2px solid #2c2c2c;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.confirm-title {
+    font-family: 'MedievalSharp', cursive;
+    color: #c0a672;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.confirm-content {
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+}
+
+.confirm-house {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+    text-shadow: 0 0 10px currentColor;
+}
+
+.confirm-options {
+    font-family: 'MedievalSharp', cursive;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.confirm-btn {
+    font-family: 'MedievalSharp', cursive;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.confirm-btn.keep {
+    background: #2A623D;
+    color: white;
+}
+
+.confirm-btn.change {
+    background: #AE0001;
+    color: white;
+}
+
+.confirm-btn:hover {
+    opacity: 0.9;
+}
+
+.hat-intro {
+    font-family: 'MedievalSharp', cursive;
+    padding: 10px;
+    text-align: center;
+}
+
+.hat-dialogue {
+    font-family: 'MedievalSharp', cursive;
+    font-style: italic;
+    margin: 20px 0;
+    color: #c0a672;
+    font-size: 16px;
+}
+
+.start-quiz-btn {
+    font-family: 'MedievalSharp', cursive;
+    background: #2A623D;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.start-quiz-btn:hover {
+    opacity: 0.9;
+}
+
+    </style>
+</head>
+<body>
+    <div class="habbo-decoracao decor-direita">
+        <img src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user=ofranco6830&action=std&direction=3&head_direction=3&img_format=gif&gesture=sml&headonly=0&size=l" style="height: 280px;">
+    </div>
+    <div id="aviso">
+        <span><i class="fa-solid fa-fish"style="color: #81a5b8;"></i> Caso prefira aplicar as aulas
+            manualmente, <a href="https://www.policiarcc.com/f116-efe-aplicacao-manual" class="bot-link"
+                target="_blank"><strong>CLIQUE AQUI</strong></a><br><br>
+                <i class="fa-solid fa-fish" style="color: #81a5b8;"></i> Pensou em alguma ideia/sugestão que ficaria legal na central? Jogue na ouvidoria!<br><br>
+                <i class="fas fa-exclamation-triangle" style="color: #c7a900;"></i> Em casos de erros, contate ,youiz ou ofranco6830.</span>
+        <button id="f-aviso"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+    <header class="classico new ocean_prof">
+        <img src="https://i.imgur.com/jXcvJ6X.png" alt="Logo">
+    </header>
+    <header class="grifinoria">
+        <img src="https://i.imgur.com/m6hOyz6.png">
+    </header>
+    
+    <header class="sonserina">
+        <img src="https://i.imgur.com/qtTegRV.png">
+    </header>
+    
+    <header class="lufa-lufa">
+        <img src="https://i.imgur.com/oBzQr4A.png">
+    </header>
+    
+    <header class="corvinal">
+        <img src="https://i.imgur.com/OvFf4s8.png">
+    </header>
+    <div class="container">
+        <div class="custom-select">
+            <div class="selected">
+                <div class="default-content">
+                    <span>Clique aqui, selecione a aula desejada e boa aplicação!</span>
+                    <img src="https://i.imgur.com/J96TQrr_d.webp?maxwidth=760&fidelity=grand" width="30">
+                </div>
+                <div class="grifinoria-content casa-theme">
+                    <span style="font-family: 'MedievalSharp', cursive;">Selecione a aula, demonstre coragem e boa bruxaria!</span>
+                    <img src="https://i.imgur.com/CYOk3cK_d.webp?maxwidth=760&fidelity=grand" width="30">
+                </div>
+                <div class="sonserina-content casa-theme">
+                    <span style="font-family: 'MedievalSharp', cursive;">Escolha sua aula com ambição e boa bruxaria!</span>
+                    <img src="https://i.imgur.com/Mw7DWMF_d.webp?maxwidth=760&fidelity=grand" width="30">
+                </div>
+                <div class="lufa-lufa-content casa-theme">
+                    <span style="font-family: 'MedievalSharp', cursive;">Selecione sua aula com dedicação e boa bruxaria!</span>
+                    <img src="https://i.imgur.com/QVjvUKX_d.webp?maxwidth=760&fidelity=grand" width="30">
+                </div>
+                <div class="corvinal-content casa-theme">
+                    <span style="font-family: 'MedievalSharp', cursive;">Escolha sua aula com sabedoria e boa bruxaria!</span>
+                    <img src="https://i.imgur.com/8jwtHrr_d.webp?maxwidth=760&fidelity=grand" width="30">
+                </div>
+            </div>
+            <div class="select-items">
+                <div data-value="APB">
+                    <img src="https://i.imgur.com/g9k1psX_d.webp?maxwidth=760&fidelity=grand" alt="Aula de Praças Básica" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [APB] Aula de Praças Básica
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos trainees+</span>
+                </div>
+                <div data-value="API">
+                    <img src="https://i.imgur.com/lrXB4Wy_d.webp?maxwidth=760&fidelity=grand" alt="Aula de Praças Intermediária" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [API] Aula de Praças Intermediária
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos assessores+</span>
+                </div>
+                <div data-value="APA">
+                    <img src="https://i.imgur.com/fhRQ9Fg_d.webp?maxwidth=760&fidelity=grand" alt="Aula de Praças Avançada" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [APA] Aula de Praças Avançada
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos secretários+</span>
+                </div>
+                <div data-value="AFP">
+                    <img src="https://i.imgur.com/cSffLBZ_d.webp?maxwidth=760&fidelity=grand" alt="Aula de Formação de Praças" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [AFP] Aula de Formação de Praças
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos assistentes+</span>
+                </div>
+                <div data-value="AFO">
+                    <img src="https://i.imgur.com/6Bshtf5_d.webp?maxwidth=760&fidelity=grand" alt="Aula de Formação de Oficiais" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [AFO] Aula de Formação de Oficiais
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos superintendentes+</span>
+                </div>
+                <div data-value="CICE">
+                    <img src="https://i.imgur.com/crmA7Zx_d.webp?maxwidth=760&fidelity=grand" alt="Curso de Introdução ao Corpo Executivo" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [CICE] Curso de Introdução ao Corpo Executivo
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos sargentos/secretários+</span>
+                </div>
+                <div data-value="AFCE">
+                    <img src="https://i.imgur.com/y5u3Wpm_d.webp?maxwidth=760&fidelity=grand" alt="Avaliação de Formação do Corpo Executivo" width="30" style="margin-top: 3px; margin-right: 10px;">
+                    [AFCE] Avaliação de Formação do Corpo Executivo
+                    <span class="desc-aula"><i class="fa-solid fa-arrow-right"></i> Destinado aos subtenentes+</span>
+                </div>
+                <div data-value="AvCE">
+                    <img src="https://i.imgur.com/Lrh8nZo_d.webp?maxwidth=760&fidelity=grand" alt="Avaliação Periódica do Corpo Executivo" width="30" style="margin-top: 3px; margin-right: 1px;">
+                    <span style="margin-left: 9px;">[Av-CE] Avaliação Periódica do Corpo Executivo</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="texto"></div>
+    </div>
+
+    <button class="btn-config" onclick="toggleSettings()">
+        <i class="fas fa-cog"></i>
+    </button>
+    
+    <div id="config-popup" class="config-popup">
+        <div class="config-header">
+            <h3><i class="fas fa-cog"></i> Configurações</h3>
+            <button class="fechar-popup" onclick="toggleSettings()"></button>
+        </div>
+        <div class="config-content">
+            <div class="acessib-accordion">
+                <div class="accordion-header" onclick="toggleAcessib()">
+                    <span style="font-size: 14px;"><i class="fa-solid fa-universal-access"></i> Acessibilidade</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <div class="acessib-options">
+                    <label class="checkbox-micro">
+                        <input type="checkbox" id="acessib-real-pro">
+                        <span class="checkmark">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Marcação duradoura
+                    </label>
+                    <label class="checkbox-micro">
+                        <input type="checkbox" id="acessib-bot-maior">
+                        <span class="checkmark">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Botões maiores
+                    </label>
+                    <label class="checkbox-micro">
+                        <input type="checkbox" id="acessib-ocult-avs">
+                        <span class="checkmark">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Ocultar aviso
+                    </label>
+                </div>
+            </div>
+            <div class="theme-accordion">
+                <div class="accordion-header" onclick="toggleThemes()">
+                    <span style="font-size: 14px;"><i class="fas fa-adjust"></i> Temas</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <div class="theme-options">
+                    <div class="tema-item" onclick="selectTheme('classico')">
+                        <div class="tema-preview classico"></div>
+                        <span>Clássico</span>
+                    </div>
+                    <div class="tema-item" onclick="selectTheme('new')">
+                        <div class="tema-preview new"></div>
+                        <span>New</span>
+                    </div>
+                    <div class="tema-item" onclick="selectTheme('ocean_prof')">
+                        <div class="tema-preview ocean_prof"></div>
+                        <span>Oceano Profundo</span>
+                    </div>
+                    <div class="tema-item" onclick="showHatQuiz()">
+                        <div class="tema-preview harry-potter"></div>
+                        <span style="font-family: 'MedievalSharp', cursive;">Hogwarts</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria1">
+<img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria2">
+<img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria3">
+<img src="https://i.imgur.com/XNdi6aB_d.webp?maxwidth=760&fidelity=grand" class="bandeira grifinoria4">
+
+<img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina1">
+<img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina2">
+<img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina3">
+<img src="https://i.imgur.com/JIAYfvk_d.webp?maxwidth=760&fidelity=grand" class="bandeira sonserina4">
+
+<img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa1">
+<img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa2">
+<img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa3">
+<img src="https://i.imgur.com/NdQf3VL_d.webp?maxwidth=760&fidelity=grand" class="bandeira lufa-lufa4">
+
+<img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal1">
+<img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal2">
+<img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal3">
+<img src="https://i.imgur.com/XMe12x6_d.webp?maxwidth=760&fidelity=grand" class="bandeira corvinal4">
+
+    <footer id="creditos">
+        <p><i class="fas fa-code"></i> Desenvolvido por <strong><a href="https://system.policercc.com.br/membros/%2Cyouiz" target="_blank">,youiz</a></strong></p>
+        <p><i class="fas fa-lightbulb"></i> Idealizado por <strong><a href="https://system.policercc.com.br/membros/ofranco6830" target="_blank">ofranco6830</a></strong> & <strong><a href="https://system.policercc.com.br/membros/-Monteiro." target="_blank">-Monteiro.</a></strong></p>
+        <p>&copy; Reservam-se os direitos a <strong>Escola de Formação de Executivos</strong>.</p>
+    </footer>
+
+    <script>
+        const scripts = {
+            APB: [
+                { tipo: 'titulo', texto: "INTRODUÇÃO" },
+                { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Saudações, executivo! Sou o(a) professor(a) responsável em lhe aplicar a Aula de Praças Básica." },
+{ tipo: 'texto', texto: "Mantenha-se ativo, atento e em silêncio. Em caso de dúvidas, acene." },
+{ tipo: 'texto', texto: "Tente anotar tudo o que será passado, pois você será testado." },
+{ tipo: 'texto', texto: "Caso eu saia da sala, aguarde por 5 minutos. Se eu não voltar, retorne ao batalhão." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "A Revolução Contra o Crime (RCC) foi fundada em 2007 pelo" },
+{ tipo: 'texto', texto: "habbo nabas704 (atual nabas201). Atualmente, a autoridade máxima da nossa polícia" },
+{ tipo: 'texto', texto: "é composta pelos policiais douglasfon71, -Edhone e Mine315-BAN." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "FORMA DE TRATAMENTO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Na RCC, utilizamos modos para se dirigir a superiores e pares/subalternos:" },
+{ tipo: 'texto', texto: "Para falar com um SUPERIOR, utilize: senhor + [patente/cargo] + [nick]." },
+{ tipo: 'texto', texto: "Exemplo: Boa noite, senhor Comandante Supremo Mine315-BAN." },
+{ tipo: 'texto', texto: "Para falar com um PAR/SUBALTERNO, utilize: [patente/cargo] + [nick]." },
+{ tipo: 'texto', texto: "Exemplo: Bom dia, Trainee Fulano." },
+{ tipo: 'texto', texto: "A patente/cargo pode ser vista na missão, que se encontra no perfil de todos." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "HIERARQUIA" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "A RCC é composta por dois corpos: militar e executivo (seu corpo)." },
+{ tipo: 'texto', texto: "Ambos são divididos em praças e oficiais." },
+{ tipo: 'texto', texto: "O Corpo Executivo (CE), é formado por cargos:" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Praças: trainee, assessor, secretário, secretário-chefe, assistente," },
+{ tipo: 'texto', texto: "assistente-chefe, analista e analista-chefe." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Oficiais: supervisor, supervisor-geral, inspetor, inspetor-geral, coordenador," },
+{ tipo: 'texto', texto: "coordenador-geral, superintendente, superintendente-geral, VIP, vice-presidente," },
+{ tipo: 'texto', texto: "presidente, acionista majoritário e chanceler." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "O Corpo Militar (CM), é formado por patentes:" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Praças: soldado, cabo, sargento, subtenente e aspirante a oficial." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Oficiais: tenente, capitão, coronel, general, marechal, comandante e comandante-geral." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Todos os cargos do Corpo Executivo possuem alguma equivalência ao Corpo Militar e vice-versa." },
+{ tipo: 'texto', texto: "Aprenderá mais sobre isso futuramente." },
+{ tipo: 'texto', texto: "A diferença entre o Corpo Militar e o Corpo Executivo, é que os executivos usam ternos." },
+{ tipo: 'texto', texto: "Os militares, o uso da boina preta é obrigatório e não usam ternos." },
+{ tipo: 'texto', texto: "Uma das formas de identificar os executivos superiores, pares/subalterno, é da seguinte forma:" },
+{ tipo: 'texto', texto: "Observe a cor da parte interna (de dentro) do terno, no caso de homens." },
+{ tipo: 'texto', texto: "Observe a cor da parte externa (de fora) do terno, no caso de mulheres." },
+{ tipo: 'texto', texto: "Caso tenha dúvidas de quem é seu superior, par/subalterno, não hesite em pedir ajuda." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "COMPORTAMENTO NA RECEPÇÃO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "A maneira como você se porta na recepção deve seguir um padrão." },
+{ tipo: 'descricao', texto: "↳ Demonstre a maneira correta e incorreta de se andar na recepção." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Quando você avistar um policial superior na recepção, é seu dever assumir sua cadeira." },
+{ tipo: 'texto', texto: "Fique a um quadrado de distância da poltrona do superior e fale: assumo, senhor/senhora." },
+{ tipo: 'descricao', texto: "↳ Sente-se na cadeira da recepção e teste-os, pedindo para que você seja assumido." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "ALISTAMENTO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'descricao', texto: "↳ A partir daqui, caso o aluno caia, é PERMITIDA a postagem de aula, contanto que esteja de acordo com o Regimento Interno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "A missão, farda e emblema são requisitos obrigatórios para" },
+{ tipo: 'texto', texto: "o alistamento de um civil:" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Missão: A missão do civil deverá estar com o espaço completamente vazio." },
+{ tipo: 'texto', texto: "Caso o recruta tenha problemas relacionados a salvar a missão, peça para que reentre." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Grupo: O grupo deve ser o POLÍCIA RCC, cujo dono deve ser a conta RCCEmblemas ou" },
+{ tipo: 'texto', texto: "algum comandante supremo." },
+{ tipo: 'texto', texto: "Os civis não estão permitidos de passar com grupos de outras organizações, polícias" },
+{ tipo: 'texto', texto: "ou que firam a Habbo Etiqueta." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Farda: Fardamento de um recruta:" },
+{ tipo: 'texto', texto: "Masculino: camisa com bolsos (manga curta), calça com bolsos e sapatos redondos." },
+{ tipo: 'texto', texto: "Feminino: camisa curta (top), calça com bolsos e sapatos redondos." },
+{ tipo: 'texto', texto: "Fardamento completamente preto, sendo os acessórios e números nas costas proibidos." },
+{ tipo: 'texto', texto: "Lembre-se que recrutas não podem utilizar acessórios, barbas ou rostos com barba" },
+{ tipo: 'texto', texto: "e que deverão estar sempre com o balão de fala na cor branca." },
+{ tipo: 'texto', texto: "Recrutas não devem ter cabelos  com estilo ou cor ou tons de pele que fujam da realidade. Caso" },
+{ tipo: 'texto', texto: "possua dúvida sobre alguma cor, acene e peça ajuda." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "TESTE PRÁTICO - COMANDOS" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Agora você será testado nos comandos da polícia." },
+{ tipo: 'texto', texto: "Na RCC, temos oito comandos: sentido, continência, apresentar armas, marcar-passos," },
+{ tipo: 'texto', texto: "silêncio, à vontade, apresente-se e dispensado." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Você conhece todos os comandos citados?" },
+{ tipo: 'descricao', texto: "↳ Siga com a explicação caso o policial não saiba os comandos; Caso o policial saiba, deverá executar todos os comandos." },
+{ tipo: 'spoiler', texto: 'Caso o policial saiba os comandos: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                            { tipo: 'texto', texto: 'Sentido!' },
+                            { tipo: 'texto', texto: 'Continência.' },
+                            { tipo: 'texto', texto: 'Apresentar armas.' },
+                            { tipo: 'texto', texto: 'Marcar passos' },
+                            { tipo: 'texto', texto: 'Silêncio!' },
+                            { tipo: 'texto', texto: 'À vontade.' },
+                            { tipo: 'texto', texto: 'Apresente-se.' },
+                            { tipo: 'texto', texto: 'Dispensado.' },
+                            ]},
+{ tipo: 'texto', texto: "Sentido: nesse comando, você deverá se levantar. Caso já esteja de pé, dê um passo à frente." },
+{ tipo: 'texto', texto: "Enquanto estiver no comando sentido, deverá se manter em silêncio e imóvel." },
+{ tipo: 'descricao', texto: "↳ Pratique sentido." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Continência: nesse comando, você deverá acenar uma única vez." },
+{ tipo: 'texto', texto: "Dica: envie o/ uma única vez." },
+{ tipo: 'descricao', texto: "↳ Pratique continência." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Apresentar-armas: nesse comando, você deverá acenar sem parar." },
+{ tipo: 'texto', texto: "Só pare quando for dado o comando Sentido." },
+{ tipo: 'texto', texto: "Dica: Envie o/ a cada 3 segundos." },
+{ tipo: 'descricao', texto: "↳ Pratique apresentar-armas." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Marcar-Passos: nesse comando, você deverá dançar Hap-Hop e só" },
+{ tipo: 'texto', texto: "parar quando for dado o comando sentido." },
+{ tipo: 'texto', texto: "Para dançar, clique em seu personagem e depois em Dançar." },
+{ tipo: 'descricao', texto: "↳ Pratique marcar-passos." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Silêncio: nesse comando, você não deve falar nada e nem responder perguntas sem permissão." },
+{ tipo: 'descricao', texto: "↳ Pratique silêncio." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "À vontade: nesse comando, você vai sentar-se ou retornar ao que estava fazendo." },
+{ tipo: 'descricao', texto: "↳ Pratique à vontade." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Agora, irei ensinar os comandos apresente-se e dispensado." },
+{ tipo: 'texto', texto: "Apresente-se: será dado o comando Sentido e você deverá se levantar." },
+{ tipo: 'texto', texto: "Então, será dado o comando Apresente-se." },
+{ tipo: 'texto', texto: "Nesse momento, vá até o quadrado da frente de seu superior e acene, ele irá retribuir." },
+{ tipo: 'texto', texto: "Então, diga: Senhor/Senhora, [Seu cargo] [Seu Nick] apresentando-se, senhor/senhora." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Dispensado: depois que já se apresentou, será dado o comando Dispensado." },
+{ tipo: 'texto', texto: "Nesse momento, acene e aguarde o seu superior retribuir." },
+{ tipo: 'texto', texto: "Então, RETORNE AO SEU LUGAR EM SENTIDO e aguarde o comando À vontade." },
+{ tipo: 'descricao', texto: "↳ Pratique apresente-se e dispensado." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Dúvidas sobre algum dos comandos?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "NEGRITO" },
+{ tipo: 'descricao', texto: "↳ Caso o aluno já saiba ou já esteja utilizando negrito, pule esta parte do script." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: 'Você está jogando por qual plataforma?' },
+{ tipo: 'descricao', texto: "↳ Avance para o spoiler condizente com a resposta do aluno." },
+{ tipo: 'descricao', texto: "↳ Auxilie o policial a utilizar negrito até que ele consiga." },
+{ tipo: 'spoiler', texto: 'Launcher (versão moderna)/Navegador/Mobile (versão nova): <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                            { tipo: 'texto', texto: 'Nesta versão, para falar em negrito, basta dizer ":shout" antes da frase.' },
+                            { tipo: 'texto', texto: 'Vamos fazer um teste, envie: Sim, senhor' },
+                            ]},
+{ tipo: 'spoiler', texto: 'Mobile (versão antiga): <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                            { tipo: 'texto', texto: 'No mobile, você deve:' },
+                            { tipo: 'texto', texto: '- Antes de sua mensagem, escrever Gritar!.' },
+                            { tipo: 'texto', texto: 'Teste, envie: Sim, senhor.' },
+                            ]},
+{ tipo: 'spoiler', texto: 'Launcher (versão clássica): <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                            { tipo: 'texto', texto: 'No aplicativo launcher, você deve segurar Shift antes de' },
+                            { tipo: 'texto', texto: 'enviar cada mensagem, ficando Shift + Enter.' },
+                            { tipo: 'texto', texto: 'Vamos fazer um teste, envie: Sim, senhor' },
+                            ]},
+                            { tipo: 'titulo', texto: "CONCLUSÃO" },
+                            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Parabéns, você foi aprovado na Aula de Praças Básica!" },
+{ tipo: 'texto', texto: "Acrescente [APB] ao fim de sua missão." },
+{ tipo: 'descricao', texto: "↳ Auxilie o policial a alterar a missão." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Vamos retornar ao batalhão." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit?gid=482045927#gid=482045927" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+                ],
+
+            API: [
+
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Saudações, executivo! Sou o(a) professor(a) responsável em lhe aplicar a" },
+            { tipo: 'texto', texto: "Aula de Praças Intermediária." },
+            { tipo: 'texto', texto: "Caso eu saia da sala, aguarde por 5 minutos. Se eu não voltar, retorne ao batalhão." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'descricao', texto: '<span style="color: #000; font-size: 12px;">O conteúdo desta aplicação é 100% remoto.</span>' },
+            { tipo: 'spoiler', texto: 'SLIDE: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'descricao', texto: "<span style='color: red;'>Em hipótese alguma fale a palavra LINK ou tente enviar o link de forma de direta.</span>" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Para que você consiga ler o conteúdo da aula, no computador(ou celular) vá em:" },
+                    { tipo: 'texto', texto: "bi# (troque # por um t e coloque um ponto final . ) Ly (barra /) RCC-EFEAPI" },
+                    { tipo: 'texto', texto: "(Tudo isto deve estar junto e SEM ESPAÇOS, para que a busca seja concluída)" },
+                    { tipo: 'texto', texto: "Avise-me quando conseguir visualizar o conteúdo." },
+                    { tipo: 'descricao', texto: "↳ Aguarde confirmação do aluno." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Você terá 10 minutos para ler todo o slide. Evite dormir" },
+                    { tipo: 'texto', texto: "enviando balões de fala a cada minuto. Pode começar." },
+                    { tipo: 'descricao', texto: "↳ Caso o policial caia após de 10 minutos ou durante alguma parte após a leitura, é PERMITIDA a postagem de aula, contanto que estejam de acordo com o Regimento Interno." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'titulo', texto: "TESTE PRÁTICO – VERIFICAÇÃO DE TAG" },
+                    { tipo: 'descricao', texto: "↳ Auxilie o aluno nas conferências até que ele acerte." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Você sabe como verificar uma TAG (identificação policial) no RCCSystem?" },
+                    { tipo: 'descricao', texto: "↳ Prossiga para os spoilers de acordo com a resposta do aluno." },
+                        { tipo: 'spoiler', texto: 'Caso seja SIM: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                                { tipo: 'texto', texto: "Cole aqui a minha e a sua iden²tificação do RCCSystem." },
+                            ]},
+                            { tipo: 'spoiler', texto: 'Caso seja NÃO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                                { tipo: 'texto', texto: "Onde está localizado Pesquisar Policial você deve inserir" },
+                                { tipo: 'texto', texto: "o nick do policial que deve conferir." },
+                                { tipo: 'texto', texto: "Após concluir a pesquisa, o perfil do militar será aberto com suas informações e" },
+                                { tipo: 'texto', texto: "sua identificação." },
+                                { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                                { tipo: 'texto', texto: "Agora, cole aqui a minha e sua identificação." },
+                            ]},
+                            
+                ]},
+            { tipo: 'texto', texto: "Alguma dúvida?" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "TESTE TEÓRICO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Você será submetido a um teste teórico acerca dos assuntos" },
+            { tipo: 'texto', texto: "abordados durante a aula. Você só poderá errar uma questão, sendo reprovado" },
+            { tipo: 'texto', texto: "no seu segundo erro." },
+            { tipo: 'texto', texto: "Vamos começar." },
+            { tipo: 'descricao', texto: "↳ Caso haja mais de um policial, solicite-os que usem sussurro." },
+            { tipo: 'descricao', texto: "↳ Considere questões que cheguem muito próximas à correta; evite reprovar por motivos simples demais." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "1. Quantas e quais são as funções do batalhão?" },
+            { tipo: 'descricao', texto: "Resposta:  Sete: recepção, operadores, sentinela, auxiliar operacional, oficial da guarda, cabo da guarda e auxiliar do cabo da guarda." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "2. Para que servem os operadores e qual a função de cada um deles?" },
+            { tipo: 'descricao', texto: "Resposta:  Eles servem para facilitar a entrada de policiais no batalhão." },
+            { tipo: 'descricao', texto: "- Operador 1: confere farda, missão e emblema." },
+            { tipo: 'descricao', texto: "- Operador 2: confere costas, perfil e balão de fala." },
+            { tipo: 'descricao', texto: "- Operador 3: confere a TAG no system e confirma os cursos, após libera a entrada no batalhão." },
+            { tipo: 'descricao', texto: "- Operador 4: confere se os recrutas são exonerados, se estão com os procedimentos corretos e se" },
+            { tipo: 'descricao', texto: "o recruta consta no system." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "3. Cite 2 regras básicas da RCC." },
+            { tipo: 'descricao', texto: "Resposta:- Nunca desobedecer a habbo etiqueta dentro ou fora do batalhão;" },
+            { tipo: 'descricao', texto: "- Respeitar todos, sejam inferiores, pares ou superiores;" },
+            { tipo: 'descricao', texto: "- Representar a polícia RCC em todos os lugares com elevados padrões;" },
+            { tipo: 'descricao', texto: "- Ser fiel à polícia RCC, nunca trabalhar em duas polícias ao mesmo tempo;" },
+            { tipo: 'descricao', texto: "- Não pedir promoção/direitos/pagamento;" },
+            { tipo: 'descricao', texto: "<span style='color: #ff0000'>Em caso de dúvidas, consulte o slide.</span>" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "4. Qual a função do sentinela?" },
+            { tipo: 'descricao', texto: "Resposta: É o policial que dá uma pré-aula aos recrutas, abordando temas que são necessários para a futura carreira." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "CONCLUSÃO" },
+            { tipo: 'spoiler', texto: 'APROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Parabéns, você foi aprovado na Aula de Praças Intermediária!" },
+                    { tipo: 'texto', texto: "Adicione [API] ao fim de sua missão, após a TAG." },
+                    { tipo: 'descricao', texto: "↳ Auxilie o policial a alterar a missão de maneira correta e prossiga." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Agora, deverá realizar sua Aula de Segurança (SEG), aplicada pelos Supervisores," },
+                    { tipo: 'texto', texto: "que utilizam o brevê verde na cabeça" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Antes de retornar ao batalhão, é válido ressaltar que após a conclusão da Aula de" },
+                    { tipo: 'texto', texto: "Segurança (SEG), poderá adentrar a uma das companhias." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso!" },
+               ]},
+            { tipo: 'spoiler', texto: 'REPROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Lamento, mas por errar 2 questões, reprovou no curso." },
+                    { tipo: 'texto', texto: "Caso desejar, poderá refazer o curso a qualquer momento, inclusive agora!" },
+                    { tipo: 'texto', texto: "Não se preocupe, a reprovação não define você e na próxima pode mudar isso!" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Deseja realizar o curso novamente?" },
+                    { tipo: 'descricao', texto: "↳ Leve-o ao batalhão caso não queira refazer novamente." },
+               ]},
+               { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit?gid=482045927#gid=482045927" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+
+            ],
+
+            APA: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Saudações, executivo! Sou o(a) professor(a) responsável por sua" },
+{ tipo: 'texto', texto: "Aula de Praças Avançada. Caso eu saia da sala, aguarde por 5 minutos." },
+{ tipo: 'texto', texto: "Se eu não voltar, retorne ao batalhão." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Deseja receber o conteúdo através de slides ou mensagens no jogo?" },
+{ tipo: 'spoiler', texto: '<span style="font-size: 14px;">SLIDES:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'descricao', texto: "<span style='color: red;'>Em hipótese alguma fale a palavra LINK ou tente enviar o link de forma de direta.</span>" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Para que você consiga ler o conteúdo da aula, no computador(ou celular) vá em:" },
+{ tipo: 'texto', texto: "bi# (troque # por um t e coloque um ponto final . ) Ly (barra /) AulaAPA" },
+{ tipo: 'texto', texto: "(Tudo isto deve estar junto e SEM ESPAÇOS, para que a busca seja concluída)" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Avise-me quando conseguir visualizar o conteúdo." },
+{ tipo: 'descricao', texto: "↳ Aguarde confirmação do aluno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Você terá 10 minutos para ler todo o slide. Evite dormir enviando" },
+{ tipo: 'texto', texto: "balões de fala a cada minuto. Pode começar." },
+{ tipo: 'descricao', texto: "↳ Caso o policial caia após 10 minutos ou durante alguma parte após a leitura, é PERMITIDA a postagem de aula, contanto que estejam de acordo com o Regimento Interno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "↳ Prossiga para o teste teórico." },
+]},
+{ tipo: 'spoiler', texto: '<span style="font-size: 14px;">MENSAGENS NO JOGO:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'titulo', texto: "FUNÇÕES" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "1. Oficial da Guarda" },
+{ tipo: 'texto', texto: "O Oficial da Guarda (OG) utiliza o balão amarelo, comanda o batalhão e executa o comando sentido" },
+{ tipo: 'texto', texto: "quando a maior patente/cargo entra no batalhão. O sentido dado é padronizado, exceto para" },
+{ tipo: 'texto', texto: "os Comandantes Supremos, que devem ser saudados com continência antes de receber a palavra." },
+{ tipo: 'texto', texto: "Aspirante a oficial/Analista+ com Curso de Formação de Oficiais concluído podem assumir esta função." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "2. Cabo da Guarda e Auxiliar" },
+{ tipo: 'texto', texto: "O Cabo da Guarda (CG) utiliza balão vermelho, comanda e organiza a troca de policiais" },
+{ tipo: 'texto', texto: "na recepção quando necessário. Caso você seja subalterno ao Cabo da Guarda e queira" },
+{ tipo: 'texto', texto: "levar policiais da recepção, deve pedir permissão para retirar o(a) policial da função." },
+{ tipo: 'texto', texto: "Após o sentido em base do Oficial da Guarda, é responsável por dar sentido à recepção." },
+{ tipo: 'texto', texto: "Em seu palanque, você terá algumas ações para lhe auxiliar: o comando fecharportas" },
+{ tipo: 'texto', texto: "fecha todas as portas dos recepcionistas (caso alguém abra, sem intenção," },
+{ tipo: 'texto', texto: "uma das portas) e o comando pkx (x é o número da cabine, exemplo: pk1), que irá" },
+{ tipo: 'texto', texto: "serpar o recruta." },
+{ tipo: 'texto', texto: "O Auxiliar do Cabo da Guarda (ACG) é responsável por auxiliar o Cabo da Guarda" },
+{ tipo: 'texto', texto: "no comando da recepção, retirando dúvidas e permitindo ausências." },
+{ tipo: 'texto', texto: "O auxiliar consegue alterar o visual do recruta para o adequado utilizando o comando" },
+{ tipo: 'texto', texto: "visux (x é o número da cabine, exemplo: visu01 ou visu02)." },
+{ tipo: 'texto', texto: "O comando rccx  (x é o número da cabine, exemplo: rcc1) poderá ser usado por todos" },
+{ tipo: 'texto', texto: "na recepção. Este comando puxa um brasão para trás do recruta da cabine," },
+{ tipo: 'texto', texto: "facilitando que este entre no grupo da polícia RCC." },
+{ tipo: 'texto', texto: "O ocupante do ACG também utiliza balão vermelho e deve ser" },
+{ tipo: 'texto', texto: "inferior ou par do Cabo da Guarda." },
+{ tipo: 'texto', texto: "Sargentos e secretários com CFS/APA poderão assumir CG e ACG." },
+{ tipo: 'descricao', texto: "↳ Simule com o aluno um comando de sentido em base, onde você é o Oficial da Guarda e ele é o Cabo da Guarda." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "3. Auxiliar Operacional" },
+{ tipo: 'descricao', texto: "↳ A partir daqui, é PERMITIDA a postagem de aula, contanto que esteja de acordo com o Regimento Interno." },
+{ tipo: 'texto', texto: "O Auxiliar Operacional (AO) comanda toda a Sala de Controle, mantendo os policiais" },
+{ tipo: 'texto', texto: "ativos e os trocando de função, se necessário." },
+{ tipo: 'texto', texto: "Obrigatoriamente, o policial deve ser par ou superior de todos os operadores presentes." },
+{ tipo: 'texto', texto: "Sargentos e secretários com CFS/APA poderão assumir AO." },
+{ tipo: 'texto', texto: "Enquanto assumir Auxiliar Operacional, você poderá ser responsabilizado pelos erros dos" },
+{ tipo: 'texto', texto: "seus operadores, portanto, interfira sempre e agilmente nas ações irregulares caso as veja." },
+{ tipo: 'texto', texto: "Além disso, como medida de segurança, deve manter as listagens de Soldados e" },
+{ tipo: 'texto', texto: "executivos no RCCSystem abertas." },
+        ]},
+{ tipo: 'titulo', texto: "TESTE TEÓRICO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Você será submetido a um teste teórico acerca dos assuntos abordados" },
+{ tipo: 'texto', texto: "nesta aula. Caso erre duas questões, será reprovado." },
+{ tipo: 'descricao', texto: "↳ Caso haja mais de um executivo, solicite que usem o sussurro e considere erro aos que responderem fora." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "1. Qual a função do Oficial da Guarda?" },
+{ tipo: 'descricao', texto: "Resposta:  Comandar todo o batalhão e dar sentido quando um superior entrar." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "2. Qual a função do Cabo da Guarda?" },
+{ tipo: 'descricao', texto: "Resposta: Comandar a recepção, retirar dúvidas dos policiais, organizar a troca de policiais e dar sentido após o Oficial da Guarda." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "3. Qual a função do Auxiliar do Cabo da Guarda?" },
+{ tipo: 'descricao', texto: "Resposta: É o responsável por retirar dúvidas dos recepcionistas permitir ausência e/ou retirada da recepção, também deve auxiliá-los enquanto estão assumindo seus superiores na recepção, utilizando os comandos visu01, visu02, visu03 e assim por diante, quando necessário na recepção." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "4. Qual a função do Auxiliar Operacional?" },
+{ tipo: 'descricao', texto: "Resposta: É responsável pela entrada e saída de membros da Sala de Controle, auxílio aos operadores e deixá-los organizados e ativos." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "TESTE PRÁTICO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Agora, você será submetido a um teste prático como Cabo da Guarda." },
+{ tipo: 'descricao', texto: "↳ Pratique o comando sentido com o executivo como CG e você como OG, logo depois se vista como um soldado e simule um alistamento. Use sua criatividade para simular situações que testem as capacidades do executivo em questão." },
+{ tipo: 'descricao', texto: "(É importante que, ao final da simulação, você dê um feedback sobre o desempenho do policial avaliado, e instruindo-o caso necessário.)" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "CONCLUSÃO" },
+{ tipo: 'spoiler', texto: '<span style="font-size: 14px;">APROVADO:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'texto', texto: "Parabéns, você foi aprovado na Aula de Praças Avançada!" },
+{ tipo: 'texto', texto: "Adicione [APA] ao fim de sua missão, após a TAG." },
+{ tipo: 'descricao', texto: "↳ Auxilie o aluno a alterar a missão de maneira correta e prossiga." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Agora, deverá realizar seu Curso de Aperfeiçoamento da Comunicação (CAC)," },
+{ tipo: 'texto', texto: "aplicado pelos Professores, que utilizam o brevê roxo na cabeça." },
+{ tipo: 'texto', texto: "O Curso de Introdução ao Corpo Executivo, aplicado pelos professores" },
+{ tipo: 'texto', texto: "da Escola de Formação de Executivos, proporciona informações" },
+{ tipo: 'texto', texto: "exclusivas sobre o Corpo Executivo." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Caso seja do seu interesse, a aula é aplicada secretários+ e agregará" },
+{ tipo: 'texto', texto: "em um melhor entendimento sobre o Corpo Executivo, aproveite!" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+]},
+{ tipo: 'spoiler', texto: '<span style="font-size: 14px;">REPROVADO:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'texto', texto: "Lamento, mas por errar 2 questões, reprovou no curso." },
+{ tipo: 'texto', texto: "Caso desejar, poderá refazer o curso a qualquer momento, inclusive agora!" },
+{ tipo: 'texto', texto: "Não se preocupe, a reprovação não define você e na próxima pode mudar isso!" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Deseja realizar o curso novamente?" },
+{ tipo: 'descricao', texto: "↳ Leve-o ao batalhão caso não queira refazer novamente." },
+]},
+
+{ tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit?gid=482045927#gid=482045927" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            ],
+
+            AFP: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: '↳ Antes de iniciar aula, <a href="https://www.policiarcc.com/memberlist" class="bot-link" target="_blank">CLIQUE AQUI</a> para conferir se o policial possui conta ativa no fórum.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Olá, sou o(a) professor(a) responsável em lhe aplicar a Aula de Formação de Praças." },
+            { tipo: 'texto', texto: "Caso eu saia da sala, aguarde por cinco minutos. Se eu não voltar, retorne ao batalhão." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Deseja receber o conteúdo através de slides (mais prático) ou mensagens no jogo (método tradicional)?" },
+            { tipo: 'spoiler', texto: 'SLIDE: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+            { tipo: 'descricao', texto: "<span style='color: red;'>Em hipótese alguma fale a palavra LINK ou tente enviar o link de forma de direta.</span>" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Para que você consiga ler o conteúdo da aula, no computador(ou celular) vá em:" },
+                    { tipo: 'texto', texto: "bi# (troque # por um t e coloque um ponto final . ) Ly (barra /) AulaAFP" },
+                    { tipo: 'texto', texto: "(Tudo isto deve estar junto e SEM ESPAÇOS, para que a busca seja concluída)" },
+                    { tipo: 'texto', texto: "Avise-me quando conseguir visualizar o conteúdo." },
+                    { tipo: 'descricao', texto: "↳ Aguarde a confirmação do aluno para prosseguir." },
+                    { tipo: 'texto', texto: "Você terá 10 minutos para ler o slide; envie um balão de fala" },
+                    { tipo: 'texto', texto: "a cada dois minutos. Pode começar." },
+                    { tipo: 'descricao', texto: "↳ Caso o aluno caia após dez minutos ou durante o teste teórico, a postagem de aula é PERMITIDA, contanto que siga os padrões do Regimento Interno." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+                    { tipo: 'descricao', texto: "↳ Envie a mensagem acima após o término da leitura do aluno." },
+                    { tipo: 'descricao', texto: "↳ Vá para TESTE TEÓRICO após a retirada de dúvidas." },
+               ]},
+            { tipo: 'spoiler', texto: 'MENSAGENS NO JOGO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+            { tipo: 'titulo', texto: "PROMOÇÕES" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "As promoções são mais do que subir um policial de patente; todas elas" },
+                    { tipo: 'texto', texto: "envolvem confiança entre superior e subordinado. É imprescindível que" },
+                    { tipo: 'texto', texto: "todas as promoções que você faça estejam de acordo com os padrões da polícia, isto é," },
+                    { tipo: 'texto', texto: "que todos os requisitos para a promoção sejam verificados antes, além de possuir" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'titulo', texto: "REGRAS BÁSICAS" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Antes de realizar qualquer tipo de promoção, você deve estar ciente de algumas" },
+                    { tipo: 'texto', texto: "necessidades básicas para dar prosseguimento à ação:" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "- Certificar-se de que o alvo tem dias mínimos e cursos completos;" },
+                    { tipo: 'texto', texto: "- Ter dois cargos a frente do cargo que deseja promover. Por exemplo" },
+                    { tipo: 'texto', texto: "caso queira promover um secretário-chefe a assistente, você deve ter pelo menos" },
+                    { tipo: 'texto', texto: "o posto de assistente-chefe;" },
+                    { tipo: 'texto', texto: "- Assistentes precisam de permissão de um oficial do Corpo Militar ou Corpo Executivo" },
+                    { tipo: 'texto', texto: "(portador de Especialização Intermediária) para realizar promoções;" },
+                    { tipo: 'texto', texto: "- Promoções que precisam de permissões precisam de postagem em permissões" },
+                    { tipo: 'texto', texto: "no RCCSystem (não realize promoções sem a postagem prévia no system)." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'titulo', texto: "ESPECIALIZAÇÕES" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "As especializações da polícia são divididas em três, sendo: básica, intermediária e" },
+                    { tipo: 'texto', texto: "avançada." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "1. Especialização Básica" },
+                    { tipo: 'texto', texto: "Para que você possa realizar qualquer ação hierárquica, precisará ter" },
+                    { tipo: 'texto', texto: "Especialização Básica." },
+                    { tipo: 'texto', texto: "Para ter Especialização Básica, você deve:" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "- Ter concluído a Aula de Formação de Praças (AFP) e Curso de Aperfeiçoamento da" },
+                    { tipo: 'texto', texto: "Comunicação (CAC);" },
+                    { tipo: 'texto', texto: "- Ter três dias no Corpo Executivo;" },
+                    { tipo: 'texto', texto: "- Possuir uma TAG ativa no RCCSystem." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "A postagem da especialização pode ser feita por você mesmo no RCCSystem" },
+                    { tipo: 'texto', texto: "em Corpo Executivo; Postagem: Especialização." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "2. Especialização Intermediária" },
+                    { tipo: 'texto', texto: "A Especialização Intermediária é visada aos oficiais, e permite com que" },
+                    { tipo: 'texto', texto: "as promoções até oficial general sejam feitas sem permissão." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Para ter Especialização Intermediária, você deve:" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "- Ter o Curso de Formação de Oficiais (CFO);" },
+                    { tipo: 'texto', texto: "- Ser Oficial do Corpo Executivo;" },
+                    { tipo: 'texto', texto: "- Ter 14 dias no Corpo Executivo;" },
+                    { tipo: 'texto', texto: "- Ser avaliado pela Diretoria." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "3. Especialização Avançada" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "A Especialização Avançada é formada por Diretores e não proibe" },
+                    { tipo: 'texto', texto: "nenhum tipo de promoção." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Para ter Especialização Avançada, você deve:" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "- Ter a Aula de Formação de Oficiais (AFO);" },
+                    { tipo: 'texto', texto: "- Ter avaliação da Diretoria do Corpo Executivo;" },
+                    { tipo: 'texto', texto: "- Ter o certificado de Avaliação de Qualificação do Oficialato Intermediário." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'titulo', texto: "DIÁLOGO PÓS-PROMOÇÃO" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "O diálogo pós-promoção é obrigatório após a aplicação de qualquer" },
+                    { tipo: 'texto', texto: "promoção que você realizar. Deve ser um diálogo explicitando todas" },
+                    { tipo: 'texto', texto: "as novas responsabilidades do policial promovido," },
+                    { tipo: 'texto', texto: "incluindo cursos que deverá fazer." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'titulo', texto: "POSTAGEM" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Para postar uma promoção, você deve acessar o RCCSystem, ir em Requerimentos" },
+                    { tipo: 'texto', texto: "e selecionar o formulário de Corpo de Praças (caso for promover um" },
+                    { tipo: 'texto', texto: "praça) ou Corpo de Oficiais (caso for promover um oficial ou aspirante)" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "A postagem de promoção deve conter motivos plausíveis para que não seja" },
+                    { tipo: 'texto', texto: "negada pelo Centro de Recursos Humanos." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+               ]},
+            { tipo: 'titulo', texto: "TESTE TEÓRICO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Agora, você será submetido a um teste sobre o conhecimento adquirido durante a aula." },
+            { tipo: 'texto', texto: "Caso erre mais de uma questão, será reprovado. Vamos começar." },
+            { tipo: 'descricao', texto: "↳ Solicite o uso de sussurro caso haja mais de um policial e considere erro em questões respondidas fora." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "1. Quantas e quais são as especializações existentes?" },
+            { tipo: 'descricao', texto: "R: 3. Básica, intermediária e avançada." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "2. Onde postar uma promoção?" },
+            { tipo: 'descricao', texto: "R: No RCCSystem em Requerimentos e Corpo de Praças/Corpo de Oficiais." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "3. O que fazer após uma promoção?" },
+            { tipo: 'descricao', texto: "R: O Diálogo Pós-Promoção." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "4. Um assistente portador de Especialização Básica," },
+            { tipo: 'texto', texto: "necessita de qual permissão para promover subalternos?" },
+            { tipo: 'descricao', texto: "R: Oficiais do Corpo Militar e Corpo Executivo (portador de Especialização Intermediária)." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "CONCLUSÃO" },
+            { tipo: 'spoiler', texto: 'APROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+            { tipo: 'texto', texto: "Parabéns, você foi aprovado na Aula de Formação de Praças!" },
+            { tipo: 'texto', texto: "Receberá na Mensagem Privada uma apostila auxiliar sobre os documentos da RCC e" },
+                    { tipo: 'texto', texto: "o Curso de Formação de Oficiais, é importante que leia para compreender e absorver" },
+                    { tipo: 'texto', texto: "sua funcionalidade, bem como a aplicação prática durante o cotidiano. Boa leitura!" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Além disso, será adicionado na listagem de concluintes da Aula de Formação de Praças!" },
+                    { tipo: 'texto', texto: "Com isso, terá o direito de realizar a Avaliação Periódica do Corpo Executivo em futuras" },
+                    { tipo: 'texto', texto: "carreiras, isentando da realização de todas as aulas obrigatórias do Corpo Executivo." },
+                    { tipo: 'texto', texto: "Adicione [AFP] ao fim de sua missão, após a TAG." },
+                    { tipo: 'descricao', texto: "↳ Auxilie o policial a alterar a missão de maneira correta e prossiga." },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+               ]},
+            { tipo: 'spoiler', texto: 'REPROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+            { tipo: 'texto', texto: "Lamento, mas por errar 2 questões, reprovou no curso." },
+            { tipo: 'texto', texto: "Caso desejar, poderá refazer o curso a qualquer momento, inclusive agora!" },
+                    { tipo: 'texto', texto: "Não se preocupe, a reprovação não define você e na próxima pode mudar isso!" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Deseja realizar o curso novamente?" },
+                    { tipo: 'descricao', texto: "↳ Leve-o ao batalhão caso não queira refazer novamente." },
+               ]},
+            { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">ENVIO DE MP</span>' },
+      { tipo: 'descricao', texto: 'Para enviar a MP Apostila - CFO / Documentação - RCC, <a href="https://www.policiarcc.com/h158-efe-gerador-de-mp-documentacao-apostila-cfo" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit?gid=482045927#gid=482045927" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+           
+            ],
+
+            AFO: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Saudações, executivo. Sou o(a) professor(a) responsável por" },
+{ tipo: 'texto', texto: "lhe aplicar a Aula de Formação de Oficiais" },
+{ tipo: 'texto', texto: "Caso eu saia da sala, aguarde por 5 minutos. Se eu não voltar, retorne ao batalhão." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Deseja receber o conteúdo através de slides ou mensagens no jogo?" },
+ { tipo: 'spoiler', texto: '<span style="font-size: 14px;">Slides:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'descricao', texto: "<span style='color: red;'>Em hipótese alguma fale a palavra LINK ou tente enviar o link de forma de direta.</span>" },
+{ tipo: 'texto', texto: "Para que você consiga ler o conteúdo da aula, no computador(ou celular) vá em:" },
+{ tipo: 'texto', texto: "bi# (troque # por um t e coloque um ponto final . ) Ly (barra /) slideAFO" },
+{ tipo: 'texto', texto: "(Tudo isto deve estar junto e SEM ESPAÇOS, para que a busca seja concluída)" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Avise-me quando conseguir visualizar o conteúdo." },
+{ tipo: 'descricao', texto: "↳ Aguarde confirmação do aluno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Você terá 10 minutos para ler todo o slide. Evite dormir enviando" },
+{ tipo: 'texto', texto: "balões de fala a cada minuto. Pode começar." },
+{ tipo: 'descricao', texto: "↳ Caso o policial caia após 10 minutos ou durante alguma parte após a leitura, é PERMITIDA a postagem de aula, contanto que estejam de acordo com o Regimento Interno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "↳ Prossiga para o teste teórico." },
+]},
+ { tipo: 'spoiler', texto: '<span style="font-size: 14px;">Script:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'titulo', texto: "CORPO DE OFICIAIS GENERAIS" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "O Corpo de Oficiais Generais é formado por Superintendentes/Generais+." },
+{ tipo: 'texto', texto: "As obrigações de um membro do COG são adversas a de um membro comum;" },
+{ tipo: 'texto', texto: "você deverá ser exímio em situações que exigem pulso firme e rigidez, além de resolução de casos." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "TRANSFERÊNCIAS DE CONTA" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Como membro do Corpo de Oficiais Generais, ao possuir Especialização Intermediária," },
+{ tipo: 'texto', texto: "você estará apto para realizar transferências de contas." },
+{ tipo: 'texto', texto: "As normativas para transferência de conta são disponibilizadas no Código de Conduta Militar," },
+{ tipo: 'texto', texto: "disposições complementares." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Policiais que forem banidos com mute por mais de 18 horas ou perderam o acesso à" },
+{ tipo: 'texto', texto: "conta por algum motivo devem transferir sua conta com sufixos como .ban e -mudo." },
+{ tipo: 'texto', texto: "Este é o modelo padrão que deve ser seguido e, caso o policial" },
+{ tipo: 'texto', texto: "opte por não utilizá-lo, deve se enquadrar em um dos seguintes tópicos:" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "a) Conta inutilizável por banimento e/ou mute prolongado;" },
+{ tipo: 'texto', texto: "b) Conta inutilizável pelo bloqueio das perguntas de segurança;" },
+{ tipo: 'texto', texto: "c) Conta inutilizável pela perda do acesso ou por falta de segurança;" },
+{ tipo: 'texto', texto: "d) Nick infringe qualquer um dos casos dispostos na política de nicknames;" },
+{ tipo: 'texto', texto: "e) Utilização da ferramenta de alteração de nick disponível na versão moderna do Habbo Hotel ou" },
+{ tipo: 'texto', texto: "transferência de conta por motivos pessoais." },
+{ tipo: 'texto', texto: "Atente-se à alínea e): policiais só poderão utilizar-se delas" },
+{ tipo: 'texto', texto: "com permissão do Alto Comando Supremo." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Policiais que forem hackeados devem, antes de terem sua conta transferida," },
+{ tipo: 'texto', texto: "ser rebaixados pelo comprometimento da sua conta, uma vez que" },
+{ tipo: 'texto', texto: "colocam a instituição em risco. Para comprovar a veracidade do" },
+{ tipo: 'texto', texto: "policial, solicite que, antes da transferência, ele lhe envie uma Mensagem Privada" },
+{ tipo: 'texto', texto: "no fórum." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+{ tipo: 'descricao', texto: "↳ A partir daqui, é PERMITIDA a postagem de aula, contanto que esteja de acordo com o Regimento Interno." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "CONCESSÃO DE PERMISSÕES" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Caso possua Especialização Intermediária, poderá conceder permissões para algumas" },
+{ tipo: 'texto', texto: "ações hierárquicas e missões; note que você estará também isento da necessidade de permissão" },
+{ tipo: 'texto', texto: "para aplicar missões." },
+{ tipo: 'texto', texto: "Antes de conceder quaisquer permissões, é necessário averiguar se o militar que vai ser" },
+{ tipo: 'texto', texto: "será alvo da ação está apto. As missões e promoções têm normativas" },
+{ tipo: 'texto', texto: "diferentes, ambas encontradas nas disposições gerais do Código" },
+{ tipo: 'texto', texto: "de Conduta Militar." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Alguma dúvida?" },
+]},
+{ tipo: 'titulo', texto: "TESTE TEÓRICO" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Você será submetido a um teste teórico sobre os assuntos abordados." },
+{ tipo: 'texto', texto: "Qualquer erro resultará em reprovação." },
+{ tipo: 'descricao', texto: "↳ Caso haja mais de um executivo, solicite que usem o sussurro e considere erro aos que responderem fora." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "1. O Corpo de Oficiais Generais é composto a partir de qual patente/cargo+?" },
+{ tipo: 'descricao', texto: "Resposta: Superintendentes/generais acima." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "2. Quais são os casos estipulados em que se é permitido a transferência de conta?" },
+{ tipo: 'descricao', texto: "Resposta: a) Conta inutilizável por banimento e/ou mute prolongado;" },
+{ tipo: 'descricao', texto: "b) Conta inutilizável pelo bloqueio das perguntas de segurança;" },
+{ tipo: 'descricao', texto: "c) Conta inutilizável pela perda do acesso ou por falta de segurança;" },
+{ tipo: 'descricao', texto: "d) Nick infringe qualquer um dos casos dispostos na política de nicknames;" },
+{ tipo: 'descricao', texto: "e) Utilização da ferramenta de alteração de nick disponível na versão moderna do Habbo Hotel ou transferência de conta por motivos pessoais." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "3. Em quais casos de transferência de nick/nome deverá ter a permissão do Alto Comando Supremo?" },
+{ tipo: 'descricao', texto: "Resposta: Na mudança de nick através da ferramenta do Habbo Hotel." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "4. Como o militar pode comprovar sua identificação antes da transferência da conta?" },
+{ tipo: 'descricao', texto: "Resposta: Solicitando que ele envie uma Mensagerm Privada no fórum." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "5. Cite o procedimento que deve ser feito e o crime em casos de contas hackeadas?" },
+{ tipo: 'descricao', texto: "Resposta: Rebaixar o policial por conta comprometida." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'titulo', texto: "CONCLUSÃO" },
+{ tipo: 'spoiler', texto: '<span style="font-size: 14px;">APROVADO:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'texto', texto: "Parabéns, você foi aprovado na Aula de Formação de Oficiais." },
+{ tipo: 'texto', texto: "Adicione [AFO] ao fim de sua missão, após a TAG." },
+{ tipo: 'descricao', texto: "↳ Auxilie o policial a alterar sua missão e prossiga. Caso seja um VIP+, instrua-o que ele poderá optar por não adicionar." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Vamos retornar ao batalhão." },
+]},
+ { tipo: 'spoiler', texto: '<span style="font-size: 14px;">REPROVADO:</span>  <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+{ tipo: 'texto', texto: "Lamento, mas por errar uma questão, reprovou no curso." },
+{ tipo: 'texto', texto: "Caso desejar, poderá refazer o curso a qualquer momento, inclusive agora!" },
+{ tipo: 'texto', texto: "Não se preocupe, a reprovação não define você e na próxima pode mudar isso!" },
+{ tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+{ tipo: 'texto', texto: "Deseja realizar o curso novamente?" },
+{ tipo: 'descricao', texto: "↳ Leve-o ao batalhão caso não queira refazer novamente. "},
+]},
+
+{ tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit?gid=482045927#gid=482045927" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+           
+            ],
+
+            CICE: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: '↳ Antes de iniciar a avaliação, <a href="https://docs.google.com/spreadsheets/d/1TC2LY8HXMgrJvQsXBpbsc1n2AT7JvHP5nsj4ZGbPC1g/edit?gid=674538770#gid=674538770" class="bot-link" target="_blank">CLIQUE AQUI</a> e confira se o policial está apto a realizar a aplicação.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Saudações, policial! Sou o(a) professor(a) responsável em lhe aplicar o" },
+            { tipo: 'texto', texto: "Curso de Introdução ao Corpo Executivo." },
+            { tipo: 'texto', texto: "Caso eu saia da sala, aguarde por 5 minutos. Se eu não voltar, retorne ao batalhão." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Você receberá uma Mensagem Privada com um conteúdo para ser lido acerca da" },
+            { tipo: 'texto', texto: "estruturação do Corpo Executivo. Finalizaremos com uma avaliação teórica." },
+            { tipo: 'texto', texto: "Avise-me quando terminar de ler. Você terá 10 minutos para ler todo o conteúdo da" },
+            { tipo: 'texto', texto: "Mensagem Privada. Evite dormir enviando balões de fala a cada minuto. Pode começar." },
+            { tipo: 'descricao', texto: '↳ <a href="https://www.policiarcc.com/h154-efe-gerador-de-mp-cice" class="bot-link" target="_blank">CLIQUE AQUI</a> para ser redirecionado ao envio automático de MPs.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Alguma dúvida?" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "TESTE TEÓRICO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Você passará por um teste teórico acerca dos assuntos abordados durante a aula." },
+            { tipo: 'texto', texto: "Fique tranquilo, não há chances de reprovar nele! Caso erre alguma questão, informarei" },
+            { tipo: 'texto', texto: "a resposta. Vamos começar!" },
+            { tipo: 'descricao', texto: "↳ Caso haja mais de um policial, solicite que sussurre." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "1. Quais são os três (03) grupos do Corpo Executivo?" },
+            { tipo: 'descricao', texto: "Resposta: Escola de Formação de Executivos, Esquadrão do Corpo Executivo e Diretoria do Corpo Executivo." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "2. Por qual meio deve-se solicitar a Especialização Básica? Explique." },
+            { tipo: 'descricao', texto: "Resposta: A Especialização Básica deverá ser pelo RCCSystem, em Corpo Executivo > Postagem: Especialização." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "3. Qual a punição exclusiva do Corpo Executivo?" },
+            { tipo: 'descricao', texto: "Resposta: Regresso de Especialização." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "4. Cite uma ocasião que permita a reforma de um executivo?" },
+            { tipo: 'descricao', texto: "Resposta: Caso tenham iniciado suas carreira como Trainee ou tenham se reintegrado de Analista e não tenham efetuado compra de cargos; Ser portador da Especialização Avançada; Enviando um pedido à Corregedoria." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "CONCLUSÃO" },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Parabéns! Você concluiu o Curso de Introdução ao Corpo Executivo." },
+            { tipo: 'texto', texto: "Você pode, de maneira opcional, adicionar a sigla da aula ao fim da" },
+            { tipo: 'texto', texto: "sua missão: [CICE]." },
+            { tipo: 'descricao', texto: "↳ O trecho acima é obrigatório somente caso você, professor, esteja aplicando aula a um sargento/secretário." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Vamos voltar ao batalhão." },
+            { tipo: 'descricao', texto: "↳ O Curso de Introdução ao Corpo Executivo deve ser postado somente nos formulários da companhia." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+
+
+            ],
+
+            AFCE: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: '↳ Antes de iniciar a avaliação, <a href="https://docs.google.com/spreadsheets/d/1TC2LY8HXMgrJvQsXBpbsc1n2AT7JvHP5nsj4ZGbPC1g/edit?gid=674538770#gid=674538770" class="bot-link" target="_blank">CLIQUE AQUI</a> e confira se o policial está apto a realizar a aplicação.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Saudações, militar! Bem-vindo(a) à Avaliação de Formação do Corpo Executivo." },
+            { tipo: 'texto', texto: "Esta é uma avaliação reservada à policiais do Corpo Militar que desejem ter direito" },
+            { tipo: 'texto', texto: "à Avaliação Periódica do Corpo Executivo no futuro." },
+            { tipo: 'texto', texto: "Você terá direito de errar, ao todo, uma questão, sendo na segunda reprovado." },
+            { tipo: 'descricao', texto: '↳ Caso haja mais de um policial, solicite que usem sussurro e considere ERRO àqueles que responderem fora.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "AVALIAÇÃO" },
+            { tipo: 'descricao', texto: '↳ A partir da questão quatro, a postagem da aula é PERMITIDA caso o aluno caia ou saia da sala, contanto que a postagem esteja de acordo com as normas do Regimento Interno.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "1. Qual a hierarquia do Corpo Executivo?" },
+            { tipo: 'descricao', texto: 'Resposta: Praças: trainee, assessor, secretário, secretário-chefe, assistente, assistente-chefe, analista e analista-chefe. Oficiais: supervisor, supervisor-geral, inspetor, inspetor-geral, coordenador, coordenador-geral, superintendente, superintendente-geral, VIP, vice-presidente, presidente, acionista majoritário e chanceler.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "2. Quais grupos são diretamente responsáveis pelo desenvolvimento do Corpo Executivo?" },
+            { tipo: 'descricao', texto: 'Resposta: Escola de Formação de Executivos, Esquadrão do Corpo Executivo e Diretoria.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "3. Quais são as funções do batalhão?" },
+            { tipo: 'descricao', texto: 'Resposta: Recepção, operadores, sentinela, Auxiliar Operacional, Oficial da Guarda, Cabo da Guarda e Auxiliar do Cabo da Guarda.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "4. Para que servem os operadores e qual a função de cada um deles?" },
+            { tipo: 'descricao', texto: 'Resposta: Operador 1: conferir a farda, missão e emblema. Operador 2: conferir as costas, perfil e balão de fala. Operador 3: conferir a identificação dos policiais e liberar a entrada para o batalhão. Operador 4: conferir se os recrutas são exonerados ou ativos e se estão com os requisitos corretos.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "5. Cite ao menos dois requisitos para obter a Especialização Básica." },
+            { tipo: 'descricao', texto: 'Resposta: - Ter concluído a Aula de Formação de Praças (AFP) ou a Avaliação Periódica do Corpo Executivo, a Aula de Segurança (SEG) e o Curso de Aperfeiçoamento da Comunicação (CAC); - Ter 03 dias no Corpo Executivo; - Possuir um cargo igual ou maior a Assistente; - Possuir uma TAG ativa no RCC System.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "6. Cite ao menos três requisitos para obter a Especialização Intermediária." },
+            { tipo: 'descricao', texto: 'Resposta: - Ter os requisitos da Especialização Básica; - Ter adentrado em uma companhia; - Ter o Curso de Formação de Oficiais (CFO); - Ser Oficial do Corpo Executivo; - Ter 14 dias no Corpo Executivo; - Ter avaliação da Diretoria, ser membro do Esquadrão do Corpo Executivo, ter sido promovido no oficialato ou concluir a Supervisão de Avanço de Especialização, aplicada pelo Esquadrão do Corpo Executivo.</span>' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "CONCLUSÃO" },
+            { tipo: 'spoiler', texto: 'APROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Parabéns, você foi aprovado na Avaliação de Formação do Corpo Executivo!" },
+                    { tipo: 'texto', texto: "Sendo assim, terá direito à realização da Avaliação Periódica do Corpo Executivo" },
+                    { tipo: 'texto', texto: "caso migre ao Corpo Executivo em nova carreira ou retorne em até 6 meses após última carreira." },
+                    { tipo: 'texto', texto: "Alguma dúvida?" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: 'Aguarde um momento, estarei realizando a postagem de conclusão do curso.' },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Vamos retornar ao batalhão." },
+                ]},
+            { tipo: 'spoiler', texto: 'REPROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Lamento, mas por errar 2 questões, reprovou no curso." },
+                    { tipo: 'texto', texto: "Caso desejar, poderá refazer o curso a qualquer momento, inclusive agora!" },
+                    { tipo: 'texto', texto: "Não se preocupe, a reprovação não define você e na próxima pode mudar isso!" },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Deseja realizar o curso novamente?" },
+                    { tipo: 'descricao', texto: "↳ Leve-o ao batalhão caso não queira refazer novamente." },
+                ]},
+            { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: '<span style="color: #338da4;">↳ A Avaliação de Formação do Corpo Executivo deve ser postada <span style="font-weight: bold;">somente</span> nos <span style="font-weight: bold;">formulários</span> da companhia.' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit#gid=1848991901" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            ],
+
+            AvCE: [
+            { tipo: 'titulo', texto: "INTRODUÇÃO" },
+            { tipo: 'descricao', texto: '↳ Antes de iniciar a avaliação, <a href="https://docs.google.com/spreadsheets/d/1gxg5liEH8E_grDX-iEroQvAGv2iO-fbsh6Pr8bsGCSc/edit?gid=674538770#gid=674538770" class="bot-link" target="_blank">CLIQUE AQUI</a> para conferir se o policial possui o Certificado de Formação de Executivos (CFE).' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Saudações, executivo! Bem-vindo(a) à Avaliação Periódica do Corpo Executivo." },
+            { tipo: 'texto', texto: "Esta é uma avaliação reservada à formados na Avaliação de Formação do" },
+            { tipo: 'texto', texto: "Corpo Executivo ou Aula de Formação de Praças." },
+            { tipo: 'texto', texto: "Você terá direito de errar, ao todo, duas questões, sendo na terceira reprovado." },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "Alguma dúvida?" },
+            { tipo: 'descricao', texto: '↳ Retire as dúvidas do policial. Caso haja mais de um, solicite que use sussurro e considere ERRO àqueles que responderem fora.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "AVALIAÇÃO" },
+            { tipo: 'descricao', texto: '↳ A partir da questão seis, a postagem da aula é PERMITIDA caso o aluno caia ou saia da sala, contanto que a postagem esteja de acordo com as normas do Regimento Interno.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "1. Como dirigir-se a um superior e a um subalterno/par?" },
+            { tipo: 'descricao', texto: 'Resposta: Superior: senhor + patente/cargo + nick. Subalterno ou par: patente/cargo + nick.</span>' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "2. Quais os três requisitos para realizar um alistamento?" },
+            { tipo: 'descricao', texto: 'Resposta: Missão, farda e emblema.</span>' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "3. Qual a hierarquia do Corpo Executivo?" },
+            { tipo: 'descricao', texto: 'Resposta: Praças: trainee, assessor, secretário, secretário-chefe, assistente, assistente-chefe, analista e analista-chefe. Oficiais: supervisor, supervisor-geral, inspetor, inspetor-geral, coordenador, coordenador-geral, superintendente, superintendente-geral, VIP, vice-presidente, presidente, acionista majoritário e chanceler.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "4. Qual a hierarquia do Corpo Militar?" },
+            { tipo: 'descricao', texto: 'Resposta: Praças: soldado, cabo, sargento, subtenente, aspirante a oficial. Oficiais: tenente, capitão, coronel, general, marechal, comandante e comandante-geral.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "5. Quais são as funções do batalhão?" },
+            { tipo: 'descricao', texto: 'Resposta: Recepção, operador, sentinela, Auxiliar Operacional, Oficial da Guarda, Cabo da Guarda e Auxiliar do Cabo da Guarda.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "6. Qual a função de cada operador e do Auxiliar Operacional?" },
+            { tipo: 'descricao', texto: 'Resposta: Operador 1: Conferir a farda, missão e emblema. Operador 2: Conferir as costas, perfil e balão de fala. Operador 3: Conferir a identificação dos policiais e liberar a entrada para o batalhão. Operador 4: Conferir se os recrutas são exonerados ou ativos e se estão com os requisitos corretos. Auxiliar Operacional: Responsável pela Sala de Controle e preenchimento/troca de operadores, quando necessário, tendo como obrigação organizar, auxiliar e supervisionar os militares e recrutas que transitam pela localidade.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "7. Defina as funções de Oficial da Guarda, Cabo da Guarda e Auxiliar do Cabo da Guarda." },
+            { tipo: 'descricao', texto: 'Resposta: Oficial da Guarda: É o responsável por comandar todo o batalhão e pelo comando sentido quando um superior de maior pantente/cargo entra no batalhão. Cabo da Guarda: Comandar a recepção, retirar dúvidas dos policiais, organizar a troca de policiais e dar sentido após o Oficial da Guarda. Auxiliar o Cabo da Guarda: no exercício de suas funções, retirar as dúvidas dos recepcionistas, permitir a ausência e/ou retirada dos recepcionistas, prestar auxílio na hora de subalternos assumirem superiores e kickar os civis mal intencionados.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "8. Quais os principais documentos da instituição?" },
+            { tipo: 'descricao', texto: 'Resposta: Código de Conduta Militar, Código Penal Militar e Plano de Controle Emergencial.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'texto', texto: "9. O que realizar após uma promoção?" },
+            { tipo: 'descricao', texto: 'Resposta: O diálogo pós-promoção.' },
+            { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+            { tipo: 'titulo', texto: "CONCLUSÃO" },
+            { tipo: 'spoiler', texto: 'APROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Parabéns, você foi aprovado na Avaliação Periódica do Corpo Executivo e" },
+                    { tipo: 'texto', texto: "terá isenção de fazer todas as aulas até a Aula de Formação de Praças." },
+                    { tipo: 'texto', texto: "Adicione ao fim da missão a TAG da aula do seu respectivo cargo." },
+                    { tipo: 'texto', texto: "Aguarde um momento, estarei realizando a postagem de conclusão do curso." },
+                    { tipo: 'descricao', texto: '↳ Auxilie o aluno a alterar a missão de maneira correta, ensinando-o a usar a TAG da aula respectiva ao seu cargo (ex.: sócios devem colocar "[APB]" no fim da missão e inspetores, "[API]").' },
+                    { tipo: 'descricao', texto: "<span style='color: #f8f8ff; font-size: 0px;'>.</span>" },
+                    { tipo: 'texto', texto: "Vamos retornar ao batalhão." },
+                ]},
+            { tipo: 'spoiler', texto: 'REPROVADO: <span class="seta"><i class="fa-solid fa-chevron-down"></i></span>', conteudo: [
+                    { tipo: 'texto', texto: "Lamento, mas por errar três questões, você está reprovado." },
+                    { tipo: 'texto', texto: "Agora deverá fazer, crescentemente, as aulas da Escola de Formação" },
+                    { tipo: 'texto', texto: "de Executivos de acordo com seu cargo." },
+                    ]},
+            { tipo: 'descricao', texto: '<span style="color: #000000; font-size: 14px;">POSTAGEM</span>' },
+            { tipo: 'descricao', texto: 'Para postar no formulário <a href="https://docs.google.com/forms/d/e/1FAIpQLScJOYtuknsAW1g2HrchQX82rKI7XEXkjX9iTXBOJTaCaNdaTw/viewform" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para conferir a postagem no formulário <a href="https://docs.google.com/spreadsheets/d/1f9fPMnAosjKEvyZ5LJtuAz-kmdn1-VXRA9Nawr2tR3k/edit#gid=1848991901" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            { tipo: 'descricao', texto: 'Para realizar a postagem no RCCSystem <a href="https://system.policercc.com.br/companhia/efe" class="bot-link" target="_blank">CLIQUE AQUI</a>' },
+            ],
+        };
+
+        const customSelect = document.querySelector('.custom-select');
+        const selected = customSelect.querySelector('.selected');
+        const selectItems = customSelect.querySelector('.select-items');
+
+        selectItems.style.display = 'none';
+
+        selected.addEventListener('click', () => {
+            const isOpen = selectItems.style.display === 'block';
+            selectItems.style.display = isOpen ? 'none' : 'block';
+        });
+
+        selectItems.addEventListener('click', (e) => {
+            const option = e.target.closest('div[data-value]');
+            if (option) {
+                const text = option.textContent.trim().split('\n')[0];
+                const value = option.getAttribute('data-value');
+
+                selected.innerHTML = `
+                <alt="${text}" width="35" style="margin-top: 3px; text-transform: uppercase;">
+                <span style="font-weight: bold; color: #81a5b8;">${text}</span>
+            `;
+
+                selectItems.style.display = 'none';
+
+                const texto = scripts[value].map(mapearCampoNaTela).join('');
+                document.getElementById('texto').innerHTML = texto;
+                document.getElementById('texto').style.display = "block";
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!customSelect.contains(e.target)) {
+                selectItems.style.display = 'none';
+            }
+        });
+
+        function mapearCampoNaTela(item, index) {
+            if (item.tipo === 'titulo') {
+                return `
+                <div class="titulo">
+                    <span>${item.texto}</span>
+                    <button class="copy-btn" onclick="copiarTexto('${item.texto}', this)">Copiar</button>
+                    <span class="timer" style="display: none;"></span>
+                </div>
+            `;
+            }
+            if (item.tipo === 'descricao') {
+                return `
+                <div class="descricao">
+                    ${item.texto}
+                </div>
+            `;
+            }
+            if (item.tipo === 'texto') {
+                return `
+                <div class="texto">
+                    <span>${item.texto}</span>
+                    <button class="copy-btn" onclick="copiarTexto('${item.texto}', this)">Copiar</button>
+                    <span class="timer" style="display: none;"></span>
+                </div>
+            `;
+            }
+            if (item.tipo === 'spoiler') {
+                return `
+                <div class="spoiler">
+                    <input type="checkbox" id="tab-${index}">
+                    <label class="spoiler-label" for="tab-${index}">${item.texto}</label>
+                    <div class="spoiler-conteudo">
+                        ${item.conteudo.map(mapearCampoNaTela).join('')}
+                    </div>
+                </div>
+                `
+            }
+            return '';
+        }
+
+        function copiarTexto(texto, botao) {
+    const tempInput = document.createElement("input");
+    tempInput.value = texto;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    const textoElement = botao.previousElementSibling;
+
+    const duracao = localStorage.getItem('realcePro') === 'true' ? 30 : 15;
+
+    botao.textContent = `${duracao}s`;
+    botao.disabled = true;
+
+    textoElement.classList.add('marcado');
+
+    botao.classList.add('pop');
+
+    let tempoRestante = duracao;
+
+    const intervalo = setInterval(() => {
+        tempoRestante--;
+        botao.textContent = `${tempoRestante}s`;
+
+        if (tempoRestante <= 0) {
+            clearInterval(intervalo);
+            botao.textContent = "Copiar";
+            botao.disabled = false;
+            textoElement.classList.remove('marcado');
+        }
+    }, 1000);
+}
+
+        window.onload = function () {
+            loadSettings();
+            const floatingMessage = document.getElementById("aviso");
+            const closeButton = document.getElementById("f-aviso");
+            const decorElement = document.querySelector('.decor-direita');
+
+        closeButton.addEventListener("click", function () {
+            floatingMessage.classList.add('closing');
+            decorElement.classList.add('closing');
+
+            floatingMessage.addEventListener('animationend', () => {
+            floatingMessage.style.display = "none";
+            }, { once: true });
+
+            decorElement.addEventListener('animationend', () => {
+            decorElement.style.display = "none";
+            }, { once: true });
+        });
+
+            setTimeout(() => {
+                floatingMessage.classList.add('closing');
+                decorElement.classList.add('closing');
+            }, 15000);
+        };
+
+        function getCookie(name) {
+            var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return v ? v[2] : null;
+        }
+
+        function bloquearTeclas(event) {
+            var teclasBloqueadas = [123, 17, 85, 80, 83, 67];
+            if (teclasBloqueadas.indexOf(event.keyCode) !== -1 || (event.ctrlKey && (event.keyCode === 85 || event.keyCode === 80))) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        document.addEventListener("contextmenu", (e) => e.preventDefault()); 
+document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+    }
+    if (e.keyCode === 123) {
+        e.preventDefault();
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.ctrlKey && event.shiftKey && event.key === "I") {
+      event.preventDefault();
+      alert("Opa! Acho que você não precisa disso... :D");
+    }
+  });
+
+if (getCookie('acessoPermitido') !== 'true' && document.referrer !== 'https://www.policiarcc.com/f276-efe-central-de-aulas') {
+            document.body.innerHTML = '<h1>Acesso negado!</h1><p>Redirecionando você para o subfórum dos professores.</p>';
+            window.location.href = 'https://www.policiarcc.com/f276-efe-central-de-aulas';
+        } else {
+            document.cookie = "acessoPermitido=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+
+        document.onkeydown = bloquearTeclas;
+
+        function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'new';
+    document.body.setAttribute('data-theme', savedTheme);
+}
+
+function selectTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    toggleSettings();
+}
+
+function loadSettings() {
+    loadTheme();
+    
+    document.getElementById('acessib-real-pro').checked = localStorage.getItem('realcePro') === 'true';
+    document.getElementById('acessib-bot-maior').checked = localStorage.getItem('botoesMaiores') === 'true';
+    document.getElementById('acessib-ocult-avs').checked = localStorage.getItem('ocultarAviso') === 'true';
+    
+    if(localStorage.getItem('botoesMaiores') === 'true') document.body.classList.add('botao-maior');
+    if(localStorage.getItem('ocultarAviso') === 'true') {
+        document.getElementById('aviso').remove();
+        document.querySelector('.habbo-decoracao').remove();
+    }
+}
+
+document.getElementById('acessib-real-pro').addEventListener('change', (e) => {
+    localStorage.setItem('realcePro', e.target.checked);
+});
+
+document.getElementById('acessib-bot-maior').addEventListener('change', (e) => {
+    localStorage.setItem('botoesMaiores', e.target.checked);
+    document.body.classList.toggle('botao-maior', e.target.checked);
+});
+
+document.getElementById('acessib-ocult-avs').addEventListener('change', (e) => {
+    localStorage.setItem('ocultarAviso', e.target.checked);
+    document.getElementById('aviso').style.display = e.target.checked ? 'none' : 'block';
+    document.querySelector('.habbo-decoracao').style.display = e.target.checked ? 'none' : 'block';
+});
+
+function toggleSettings() {
+    const popup = document.getElementById('config-popup');
+    popup.classList.toggle('active');
+}
+
+function toggleThemes() {
+    const options = document.querySelector('.theme-options');
+    const arrow = document.querySelector('.theme-accordion .arrow-icon');
+    options.classList.toggle('open');
+    arrow.classList.toggle('rotated');
+}
+
+function toggleAcessib() {
+    const options = document.querySelector('.acessib-options');
+    const arrow = document.querySelector('.acessib-accordion .arrow-icon');
+    options.classList.toggle('open');
+    arrow.classList.toggle('rotated');
+}
+const btnConfig = document.querySelector('.btn-config i');
+
+btnConfig.addEventListener('click', () => {
+    btnConfig.classList.toggle('rotated');
+});
+function toggleHogwartsSubThemes() {
+    const subOptions = document.querySelector('.hogwarts-sub-options');
+    subOptions.style.display = subOptions.style.display === 'block' ? 'none' : 'block';
+}
+
+const houses = {
+    grifinoria: {
+        name: "Grifinória",
+        color: "#AE0001",
+        animal: `<img src="https://i.imgur.com/CDEuWbj_d.webp?maxwidth=760&fidelity=grand" 
+               style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+    },
+    sonserina: {
+        name: "Sonserina", 
+        color: "#2A623D",
+        animal: `<img src="https://i.imgur.com/JVOK7xc_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+    },
+    "lufa-lufa": {
+        name: "Lufa-Lufa",
+        color: "#FFDB00",
+        animal: `<img src="https://i.imgur.com/SSUJADN_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+    },
+    corvinal: {
+        name: "Corvinal",
+        color: "#222F5B",
+        animal: `<img src="https://i.imgur.com/x7P3aCS_d.webp?maxwidth=760&fidelity=grand" style="width: 80px; height: auto; display: block; margin: 0 auto;">`
+    }
+};
+
+const quiz = [
+    {
+        pergunta: "Qual sua característica mais marcante na RCC?",
+        respostas: [
+            { texto: "Pulso-firme", casa: "grifinoria" },
+            { texto: "Inteligência", casa: "corvinal" },
+            { texto: "Socializar", casa: "lufa-lufa" },
+            { texto: "Arriscar a todo custo", casa: "sonserina" }
+        ]
+    },
+    {
+        pergunta: "Qual aspecto você priorizaria na sua carreira militar?",
+        respostas: [
+            { texto: "Alcançar o topo a todo custo", casa: "sonserina" },
+            { texto: "Liderança para inspirar meus companheiros", casa: "grifinoria" },
+            { texto: "Disciplina e trabalho em equipe", casa: "lufa-lufa" },
+            { texto: "Conhecimento e inteligência para tomar decisões precisas", casa: "corvinal" }
+        ]
+    },
+    {
+        pergunta: "Qual virtude você valoriza mais?",
+        respostas: [
+            { texto: "Lealdade", casa: "lufa-lufa" },
+            { texto: "Ambição", casa: "sonserina" },
+            { texto: "Coragem", casa: "grifinoria" },
+            { texto: "Sabedoria", casa: "corvinal" },
+        ]
+    }
+];
+
+let currentQuestion = 0;
+let housePoints = { grifinoria:0, sonserina:0, "lufa-lufa":0, corvinal:0 };
+
+function showHatQuiz() {
+    document.getElementById('hat-quiz')?.remove();
+    document.getElementById('hat-confirm')?.remove();
+
+    userHouse = localStorage.getItem('selectedHouse');
+
+    if(userHouse) {
+        showHouseConfirmation();
+    } else {
+        showHatIntroduction();
+    }
+    
+    currentQuestion = 0;
+    housePoints = { 
+        grifinoria: 0, 
+        sonserina: 0, 
+        "lufa-lufa": 0, 
+        corvinal: 0 
+    };
+}
+
+function startHouseQuiz() {
+    document.getElementById('hat-quiz').innerHTML = `
+        <div class="hat-header">
+            <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+            <div class="hat-title">O Chapéu Seletor</div>
+        </div>
+        <div id="question-container"></div>
+    `;
+    showQuestion();
+}
+
+function showHatIntroduction() {
+    const introHTML = `
+    <div id="hat-quiz">
+        <div class="hat-header">
+            <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+            <div class="hat-title">Chapéu Seletor</div>
+        </div>
+        <div class="hat-intro">
+            <div class="hat-dialogue">
+                "Hmm... interessante...<br>
+                Vamos ver onde você se encaixa!"
+            </div>
+            <button onclick="startHouseQuiz()" class="start-quiz-btn">
+                VAMOS!
+            </button>
+        </div>
+    </div>`;
+    
+    document.body.insertAdjacentHTML('beforeend', introHTML);
+}
+
+function showHouseConfirmation() {
+    const house = houses[userHouse];
+    const confirmationHTML = `
+    <div id="hat-confirm">
+        <div class="hat-header">
+            <img src="https://i.imgur.com/s1TNcxS.png" class="hat-image">
+            <div class="confirm-title">Sua casa, bruxo.</div>
+        </div>
+        <div class="confirm-content">
+            <div class="confirm-house" style="color: ${house.color}">
+                ${house.name}
+            </div>
+            <div class="confirm-options">
+                <button onclick="applyHouseTheme('${userHouse}')" class="confirm-btn keep">
+                    MANTER CASA
+                </button>
+                <button onclick="resetHouseSelection()" class="confirm-btn change">
+                    ALTERAR CASA
+                </button>
+            </div>
+        </div>
+    </div>`;
+    
+    document.body.insertAdjacentHTML('beforeend', confirmationHTML);
+}
+
+function resetHouseSelection() {
+    localStorage.removeItem('selectedHouse');
+    userHouse = null;
+    document.getElementById('hat-confirm').remove();
+    showHatQuiz();
+}
+
+function showQuestion() {
+    const question = quiz[currentQuestion];
+    let answersHTML = question.respostas.map((r,i) => `
+        <div class="hat-answer" onclick="selectAnswer(${i})">
+            <div class="answer-bullet"><i class="fa-solid fa-arrow-right"></i></div>
+            ${r.texto}
+        </div>
+    `).join('');
+
+    document.getElementById('question-container').innerHTML = `
+        <div class="hat-question">${question.pergunta}</div>
+        ${answersHTML}
+    `;
+}
+
+function selectAnswer(index) {
+    const selectedHouse = quiz[currentQuestion].respostas[index].casa;
+    housePoints[selectedHouse] += 2;
+    
+    const otherHouses = Object.keys(houses).filter(h => h !== selectedHouse);
+    const randomHouse = otherHouses[Math.floor(Math.random()*3)];
+    housePoints[randomHouse] += 1;
+
+    currentQuestion++;
+    
+    if(currentQuestion < quiz.length) {
+        showQuestion();
+    } else {
+        showFinalResult();
+    }
+}
+
+function showFinalResult() {
+    let maxPoints = Math.max(...Object.values(housePoints));
+    let selectedHouse = Object.keys(housePoints).find(h => housePoints[h] === maxPoints);
+    
+    const house = houses[selectedHouse];
+    
+    document.getElementById('hat-quiz').innerHTML = `
+        <div class="hat-result">
+            <div class="result-house" style="color: ${house.color}">
+                ${house.name}!
+            </div>
+            <div class="result-animal">${house.animal}</div>
+            <div class="result-description">
+                Tenho em mim os segredos de sua mente...<br>
+                ${houseDescription[selectedHouse]}
+            </div>
+            <button onclick="applyHouseTheme('${selectedHouse}')" 
+                class="accept-house">
+                ACEITAR
+            </button>
+        </div>
+    `;
+}
+
+const houseDescription = {
+    grifinoria: "Sua coragem flamejante e nobreza de espírito brilham como o fogo da Gryffindor!",
+    sonserina: "Sua ambição pura e astúcia aguçada são dignas dos maiores Sonserinos!",
+    "lufa-lufa": "Sua lealdade inabalável e coração verdadeiro fazem de você um verdadeiro Lufano!",
+    corvinal: "Sua mente brilhante e sede por conhecimento são dignas dos sábios Corvinos!"
+};
+
+function applyHouseTheme(house) {
+    userHouse = house;
+    localStorage.setItem('selectedHouse', house);
+    selectTheme(house);
+    document.getElementById('hat-quiz')?.remove();
+    document.getElementById('hat-confirm')?.remove();
+    toggleSettings();
+}
+
+let userHouse = null;
+
+window.addEventListener('load', () => {
+    userHouse = localStorage.getItem('selectedHouse');
+});
+
+(function() {
+        const savedTheme = localStorage.getItem('theme') || 'new';
+        document.body.setAttribute('data-theme', savedTheme);
+    })();
+
+    </script>
+</body>
+</html>
