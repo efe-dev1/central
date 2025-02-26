@@ -2734,7 +2734,7 @@ header {
         botao.textContent = `${tempoRestante}s`;
 
         if (tempoRestante <= 0) {
-            clearInterval(intervalo);
+            clearInterval(botao.intervalo);
             botao.textContent = "Copiar";
             botao.disabled = false;
             textoElement.classList.remove('marcado');
