@@ -2724,11 +2724,6 @@ header {
             }, 15000);
         };
 
-        function getCookie(name) {
-            var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-            return v ? v[2] : null;
-        }
-
         function bloquearTeclas(event) {
             var teclasBloqueadas = [123, 17, 85, 80, 83, 67];
             if (teclasBloqueadas.indexOf(event.keyCode) !== -1 || (event.ctrlKey && (event.keyCode === 85 || event.keyCode === 80))) {
@@ -2754,9 +2749,9 @@ document.addEventListener("keydown", function(event) {
     }
   });
 
-if (getCookie('acessoPermitido') !== 'true' && !document.referrer.includes('https://www.policiarcc.com/f276-efe-central-de-aulas')) {
+if (document.referrer !== "https://www.policiarcc.com/f276-efe-central-de-aulas") {
     document.body.innerHTML = '<h1>Acesso negado!</h1><p>Redirecionando você para o subfórum dos professores.</p>';
-    window.location.href = 'https://www.policiarcc.com/f276-efe-central-de-aulas';
+    window.location.href = "https://www.policiarcc.com/f276-efe-central-de-aulas";
 }
 
         document.onkeydown = bloquearTeclas;
