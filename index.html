@@ -1227,24 +1227,6 @@ header {
 }
 
 @media only screen and (max-width: 768px) {
-    .tema-item.harry-potter-theme {
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-    .tema-item.harry-potter-theme {
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 768px) and (orientation: portrait) {
-    .tema-item.harry-potter-theme {
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 768px) {
     header img {
         max-width: 60%;
         margin: -9px auto;
@@ -3097,6 +3079,24 @@ window.addEventListener('load', () => {
         const savedTheme = localStorage.getItem('theme') || 'new';
         document.body.setAttribute('data-theme', savedTheme);
     })();
+
+            function esconderBandeiras() {
+    const temaItems = document.querySelectorAll('.tema-item.harry-potter-theme');
+    
+    if (window.innerWidth <= 768) {
+        temaItems.forEach(item => {
+            item.style.display = 'none';
+        });
+    } else {
+        temaItems.forEach(item => {
+            item.style.display = '';
+        });
+    }
+}
+
+window.addEventListener('load', esconderBandeiras);
+
+window.addEventListener('resize', esconderBandeiras);
 
     </script>
 </body>
