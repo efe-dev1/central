@@ -1226,20 +1226,16 @@ header {
     gap: 10px;
 }
 
-@media only screen and (max-width: 768px) {
-    [data-theme] .bandeira {
+@media (max-width: 768px) {
+    .tema-item.harry-potter-theme {
         display: none !important;
     }
 }
 
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-    [data-theme] .bandeira {
-        display: none !important;
-    }
-
+@media only screen and (max-width: 768px) {
     header img {
-        max-width: 55%;
-        margin: -10px auto;
+        max-width: 60%;
+        margin: -9px auto;
     }
 
     [data-theme] header img {
@@ -1696,7 +1692,7 @@ header {
                         <div class="tema-preview ocean_prof"></div>
                         <span>Oceano Profundo</span>
                     </div>
-                    <div class="tema-item" onclick="showHatQuiz()">
+                    <div class="tema-item harry-potter-theme" onclick="showHatQuiz()">
                         <div class="tema-preview harry-potter"></div>
                         <span style="font-family: 'MedievalSharp', cursive;">Hogwarts</span>
                     </div>
