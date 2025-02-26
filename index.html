@@ -1226,20 +1226,6 @@ header {
     gap: 10px;
 }
 
-@media only screen and (max-width: 768px) {
-    header img {
-        max-width: 60%;
-        margin: -9px auto;
-    }
-
-    [data-theme] header img {
-    max-width: 65%;
-    display: block;
-    margin: -1px auto;
-    transition: transform 0.3s ease-in-out;
-    }
-}
-
 [data-theme="grifinoria"] .default-content,
 [data-theme="sonserina"] .default-content,
 [data-theme="lufa-lufa"] .default-content,
@@ -1527,6 +1513,79 @@ header {
     opacity: 0.9;
 }
 
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .custom-select {
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .selected span {
+        font-size: 14px;
+    }
+
+    .select-items div {
+        padding: 12px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .select-items img {
+        margin-bottom: 5px;
+    }
+
+    .desc-aula {
+        font-size: 10px;
+    }
+
+    #texto {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .copy-btn {
+        padding: 4px 6px;
+        font-size: 8px;
+    }
+
+    .btn-config {
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .config-popup {
+        bottom: 80px;
+        left: 15px;
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 360px) {
+    .selected span {
+        font-size: 12px;
+    }
+
+    .select-items div {
+        padding: 10px;
+    }
+
+    .titulo {
+        font-size: 14px;
+    }
+
+    .descricao {
+        font-size: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1686,7 +1745,7 @@ header {
                         <div class="tema-preview ocean_prof"></div>
                         <span>Oceano Profundo</span>
                     </div>
-                    <div class="tema-item harry-potter-theme" onclick="showHatQuiz()">
+                    <div class="tema-item" onclick="showHatQuiz()">
                         <div class="tema-preview harry-potter"></div>
                         <span style="font-family: 'MedievalSharp', cursive;">Hogwarts</span>
                     </div>
@@ -3079,26 +3138,6 @@ window.addEventListener('load', () => {
         const savedTheme = localStorage.getItem('theme') || 'new';
         document.body.setAttribute('data-theme', savedTheme);
     })();
-
-function esconderHogwarts() {
-    const temaItems = document.querySelectorAll('.tema-item');
-    
-    if (window.innerWidth <= 768) {
-        temaItems.forEach(item => {
-            if (item.querySelector('.tema-preview.harry-potter')) {
-                item.style.display = 'none';
-            }
-        });
-    } else {
-        temaItems.forEach(item => {
-            item.style.display = '';
-        });
-    }
-}
-
-window.addEventListener('load', esconderHogwarts);
-window.addEventListener('resize', esconderHogwarts);
-window.addEventListener('orientationchange', esconderHogwarts);
 
     </script>
 </body>
