@@ -297,18 +297,18 @@
         }
 
         .custom-select {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 60px;
-            background: #fff;
-            border: 2px solid #dedede;
-            border-radius: 20px 15px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-            padding: 0 15px;
-            cursor: pointer;
-        }
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7.75dvh;
+    background: #fff;
+    border: 0.3dvh solid #dedede;
+    border-radius: 2.75dvh;
+    box-shadow: 0 0.5dvh 1.2dvh rgba(0, 0, 0, 0.15);
+    padding: 0 1.5dvh;
+    cursor: pointer;
+}
 
         .custom-select select {
             display: none;
@@ -489,18 +489,18 @@
 
         .btn-config {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 1.75dvh;
+    left: 1.75dvw;
     color: white;
-    background-color: #7b7b7b;
-    border: 2px solid transparent;
-    font-size: 20px;
-    border-radius: 10px;
+    background-color: transparent;
+    border: 0.2dvh solid transparent;
+    font-size: 2.5dvh;
+    border-radius: 1.5dvh;
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    width: 35px;
-    height: 35px;
+    box-shadow: 0.2dvh 0.2dvh 0.5dvh rgba(0, 0, 0, 0.2);
+    width: 4.5dvh;
+    height: 4.5dvh;
 }
 
 .btn-config i {
@@ -514,15 +514,15 @@
 .config-popup {
     display: none;
     position: fixed;
-    bottom: 90px;
-    left: 25px;
-    width: 340px;
+    bottom: 10dvh;
+    left: 2.55dvw;
+    width: 20dvw;
     background: linear-gradient(145deg, #424242, #2b2b2b);
-    border-radius: 15px;
+    border-radius: 1.5dvh;
     z-index: 1001;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.41);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    box-shadow: 0 0.5dvh 1dvh rgba(0, 0, 0, 0.41);
+    border: 0.1dvh solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0.8dvh);
     overflow: hidden;
 }
 
@@ -853,6 +853,7 @@
     font-size: 24px;
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
+
 .bandeira {
     display: none;
 }
@@ -862,7 +863,6 @@
 [data-theme="grifinoria"] .bandeira.grifinoria3,
 [data-theme="grifinoria"] .bandeira.grifinoria4 {
     display: block;
-    z-index: -2;
 }
 
 [data-theme="grifinoria"] .bandeira.grifinoria1 { top: 10px; left: 10px; }
@@ -1226,6 +1226,12 @@ header {
     gap: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+    [data-theme] .bandeira {
+        display: none !important;
+    }
+}
+
 [data-theme="grifinoria"] .default-content,
 [data-theme="sonserina"] .default-content,
 [data-theme="lufa-lufa"] .default-content,
@@ -1272,22 +1278,6 @@ header {
     text-shadow: 0 1px 2px rgba(14,26,64,0.2);
 }
 
-[data-theme="grifinoria"] .btn-config {
-    background-color: #740001;
-}
-
-[data-theme="sonserina"] .btn-config {
-    background-color: #1c4d10;
-}
-
-[data-theme="corvinal"] .btn-config {
-    background-color: #202a6e;
-}
-
-[data-theme="lufa-lufa"] .btn-config {
-    background-color: #b2b230;
-}
-
 [data-theme="grifinoria"],
 [data-theme="sonserina"],
 [data-theme="lufa-lufa"],
@@ -1323,14 +1313,13 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #0a0a0a;
-    border: 2px solid #2c2c2c;
-    border-radius: 15px;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
+    border: 0.2dvh solid #2c2c2c;
+    border-radius: 1.5dvh;
+    padding: 2dvh;
+    width: 100dvw;
+    max-width: 60dvh;
     z-index: 9999;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    font-family: 'Times New Roman', serif;
+    box-shadow: 0 0 2dvh rgba(0,0,0,0.5);
 }
 
 .hat-header {
