@@ -2749,9 +2749,8 @@ document.addEventListener("keydown", function(event) {
     }
   });
 
-if (document.referrer !== "https://www.policiarcc.com/f276-efe-central-de-aulas") {
-    document.body.innerHTML = '<h1>Acesso negado!</h1><p>Redirecionando você para o subfórum dos professores.</p>';
-    console.log(document.referrer)
+if (document.referrer !== 'https://www.policiarcc.com/f276-efe-central-de-aulas') {
+	document.body.innerHTML = `‹h1›Acesso negado! ${document.referrer}</h1>‹p›Redirecionando você para o subfórum dos professores.</p›`;
 }
 
         document.onkeydown = bloquearTeclas;
