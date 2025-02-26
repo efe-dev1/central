@@ -1226,7 +1226,13 @@ header {
     gap: 10px;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+    .tema-item.harry-potter-theme {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
     .tema-item.harry-potter-theme {
         display: none !important;
     }
