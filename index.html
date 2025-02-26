@@ -3080,12 +3080,14 @@ window.addEventListener('load', () => {
         document.body.setAttribute('data-theme', savedTheme);
     })();
 
-    function esconderTema() {
-    const temaItems = document.querySelectorAll('.tema-item.harry-potter-theme');
+function esconderHogwarts() {
+    const temaItems = document.querySelectorAll('.tema-item');
     
     if (window.innerWidth <= 768) {
         temaItems.forEach(item => {
-            item.style.display = 'none';
+            if (item.querySelector('.tema-preview.harry-potter')) {
+                item.style.display = 'none';
+            }
         });
     } else {
         temaItems.forEach(item => {
@@ -3094,9 +3096,9 @@ window.addEventListener('load', () => {
     }
 }
 
-window.addEventListener('load', esconderTema);
+window.addEventListener('load', esconderHogwarts);
 
-window.addEventListener('resize', esconderTema);
+window.addEventListener('resize', esconderHogwarts);
 
     </script>
 </body>
