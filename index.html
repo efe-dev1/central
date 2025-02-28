@@ -490,7 +490,8 @@
     bottom: 1.75dvh;
     left: 1.75dvw;
     color: white;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
     border: 0.2dvh solid transparent;
     font-size: 2.5dvh;
     border-radius: 1.5dvh;
@@ -499,6 +500,11 @@
     box-shadow: 0.2dvh 0.2dvh 0.5dvh rgba(0, 0, 0, 0.2);
     width: 4.5dvh;
     height: 4.5dvh;
+    transition: background 0.8s ease;
+}
+
+.btn-config:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .btn-config i {
@@ -512,15 +518,15 @@
 .config-popup {
     display: none;
     position: fixed;
-    bottom: 90px;
+    bottom: 70px;
     left: 25px;
-    width: 340px;
-    background: linear-gradient(145deg, #424242, #2b2b2b);
-    border-radius: 15px;
+    width: 320px;
+    height: auto;
+    background: rgba(30, 30, 30, 0.593);
+    backdrop-filter: blur(10px);
+    border-radius: 17px;
     z-index: 1001;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.41);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
     overflow: hidden;
 }
 
@@ -542,20 +548,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.config-header i {
-    position: absolute;
-    top: 18px;
-    left: 10px;
-    color: #ffffff;
-    font-size: 16px;
-    transition: transform 2s ease;
-}
-
-.config-header i:hover {
-    cursor: pointer;
-    transform: rotate(360deg);
-}
-
 .config-content {
     padding: 15px;
 }
@@ -563,16 +555,22 @@
 .tema-item {
     display: flex;
     align-items: center;
-    padding: 8px;
-    margin: 8px 0;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    gap: 10px;
+    padding: 8px 9px;
+    margin: 6px 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: 1px solid rgba(145, 201, 209, 0.1);
 }
 
 .tema-item:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.185);
+}
+
+.tema-item:active {
+    transform: scale(0.98);
 }
 
 .tema-preview {
@@ -762,9 +760,22 @@
 
 .theme-options {
     max-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
     transition: max-height 0.3s ease-out;
     font-size: 13px;
+}
+
+.theme-options::-webkit-scrollbar {
+    width: 3px;
+}
+
+.theme-options::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.theme-options::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .acessib-options {
@@ -779,7 +790,8 @@
 }
 
 .theme-options.open {
-    max-height: 300px;
+    max-height: 150px;
+    overflow-y: auto;
 }
 
 .arrow-icon.rotated {
@@ -790,11 +802,11 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 28px;
-    height: 28px;
-    background: #393939;
+    width: 27px;
+    height: 27px;
+    background: transparent;
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -804,11 +816,11 @@
 }
 
 .fechar-popup:hover {
-    background: #ff4d4d;
+    background: #ff5555bf;
 }
 
 .fechar-popup:active {
-    transform: scale(0.8);
+    transform: scale(0.9);
 }
 
 .fechar-popup::after {
@@ -1665,6 +1677,50 @@ header {
     }
 }
 
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+    margin-bottom:-4px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 7px 9px;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-size: 11px;
+}
+
+.social-button.discord {
+    background: transparent;
+    border: 2px solid rgba(88, 101, 242, 0.7);
+}
+
+.social-button.discord:hover {
+    background: rgba(88, 101, 242, 0.9);
+}
+
+.social-button.whatsapp {
+    background: transparent;
+    border: 2px solid rgba(37, 211, 102, 0.7);
+}
+
+.social-button.whatsapp:hover {
+    background: rgba(37, 211, 102, 0.9);
+}
+
+.social-button i {
+    font-size: 11px;
+}
+
+
     </style>
 </head>
 <body>
@@ -1676,7 +1732,7 @@ header {
             manualmente, <a href="https://www.policiarcc.com/f116-efe-aplicacao-manual" class="bot-link"
                 target="_blank"><strong>CLIQUE AQUI</strong></a><br><br>
                 <i class="fa-solid fa-fish" style="color: #81a5b8;"></i> Pensou em alguma ideia/sugestão que ficaria legal na central? Jogue na ouvidoria!<br><br>
-                <i class="fas fa-exclamation-triangle" style="color: #c7a900;"></i> Em casos de erros, contate ,youiz ou ofranco6830.</span>
+                <i class="fas fa-exclamation-triangle" style="color: #c7a900;"></i> Em casos de erros, contate a equipe de DEV da EFE.</span>
         <button id="f-aviso"><i class="fa-regular fa-circle-xmark"></i></button>
     </div>
     <header class="classico new ocean_prof">
@@ -1773,7 +1829,7 @@ header {
     
     <div id="config-popup" class="config-popup">
         <div class="config-header">
-            <h3><i class="fas fa-cog"></i> Configurações</h3>
+            <h3>Configurações</h3>
             <button class="fechar-popup" onclick="toggleSettings()"></button>
         </div>
         <div class="config-content">
@@ -1830,6 +1886,13 @@ header {
                     </div>
                 </div>
             </div>
+            <div class="social-buttons">
+                <a href="https://discord.gg/McvyPdzB" target="_blank" class="social-button discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="https://chat.whatsapp.com/DdaPzbgLj6nGTldEosAldr" target="_blank" class="social-button whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
             </div>
         </div>
     </div>
@@ -2957,7 +3020,6 @@ document.addEventListener("keydown", function(event) {
         deletarCookie(acessoToken);
     }
 })();
-
 
         document.onkeydown = bloquearTeclas;
 
