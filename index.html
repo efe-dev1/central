@@ -791,7 +791,7 @@
         }
 
         .theme-options.open {
-            max-height: 150px;
+            max-height: 120px;
             overflow-y: auto;
         }
 
@@ -1725,8 +1725,84 @@
             margin-left: auto;
             color: #00c853;
             font-weight: bold;
-            padding-left: 10px;
+            padding-left: 7px;
             display: none;
+        }
+
+        .tema-preview.harry-potter.grifinoria {
+            background: linear-gradient(135deg, #AE0001 25%, #740001 25%, #740001 50%, #AE0001 50%, #AE0001 75%, #740001 75%);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #FFDB00;
+        }
+
+        .tema-preview.harry-potter.grifinoria::before {
+            content: "\f530";
+            font-size: 18px;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .tema-preview.harry-potter.sonserina {
+            background: linear-gradient(135deg, #2A623D 25%, #1C4A2B 25%, #1C4A2B 50%, #2A623D 50%, #2A623D 75%, #1C4A2B 75%);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .tema-preview.harry-potter.sonserina::before {
+            content: "\e579";
+            font-size: 20px;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .tema-preview.harry-potter.lufa-lufa {
+            background: linear-gradient(135deg, #FFDB00 25%, #D4AF37 25%, #D4AF37 50%, #FFDB00 50%, #FFDB00 75%, #D4AF37 75%);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #000;
+        }
+
+        .tema-preview.harry-potter.lufa-lufa::before {
+            content: "\f1b0";
+            font-size: 24px;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .tema-preview.harry-potter.corvinal {
+            background: linear-gradient(135deg, #222F5B 25%, #0E1A40 25%, #0E1A40 50%, #222F5B 50%, #222F5B 75%, #0E1A40 75%);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .tema-preview.harry-potter.corvinal::before {
+            content: "\f520";
+            font-size: 18px;
+            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
         }
 
             </style>
@@ -1894,7 +1970,6 @@
                             <div class="tema-item" onclick="showHatQuiz()">
                                 <div class="tema-preview harry-potter"></div>
                                 <span style="font-family: 'MedievalSharp', cursive;">Hogwarts</span>
-                                <span class="tema-atual-indicador" id="indicador-hogwarts" style="display: none;">✔</span>
                             </div>
                         </div>
                     </div>
@@ -3040,7 +3115,6 @@
             const savedTheme = localStorage.getItem('theme') || 'new';
             document.body.setAttribute('data-theme', savedTheme);
             updateThemeIndicator(savedTheme);
-            updateThemeIndicator('hogwarts');
         }
 
         function selectTheme(theme) {
@@ -3051,7 +3125,7 @@
         }
 
         function updateThemeIndicator(theme) {
-            const temas = ['classico', 'new', 'ocean_prof', 'hogwarts'];
+            const temas = ['classico', 'new', 'ocean_prof'];
             temas.forEach(t => {
                 const indicador = document.getElementById(`indicador-${t}`);
                 if (indicador) {
@@ -3327,10 +3401,14 @@
         function applyHouseTheme(house) {
             userHouse = house;
             localStorage.setItem('selectedHouse', house);
+
+        const temaPreview = document.querySelector('.tema-preview.harry-potter');
+            if (temaPreview) {
+                temaPreview.className = `tema-preview harry-potter ${house}`;
+        }
             selectTheme(house);
             document.getElementById('hat-quiz')?.remove();
             document.getElementById('hat-confirm')?.remove();
-            updateThemeIndicator('hogwarts');
             toggleSettings();
         }
 
@@ -3338,6 +3416,13 @@
 
         window.addEventListener('load', () => {
             userHouse = localStorage.getItem('selectedHouse');
+            const savedHouse = localStorage.getItem('selectedHouse');
+        if (savedHouse) {
+        const temaPreview = document.querySelector('.tema-preview.harry-potter');
+        if (temaPreview) {
+            temaPreview.className = `tema-preview harry-potter ${savedHouse}`;
+        }
+    }
         });
 
         (function() {
