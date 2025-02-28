@@ -824,10 +824,6 @@
     transition: opacity 0.3s ease;
 }
 
-.hogwarts-sub-options {
-    padding-left: 20px;
-}
-
 .tema-preview.harry-potter {
     background: linear-gradient(135deg, 
         #2c3e50 25%,
@@ -1252,6 +1248,7 @@ header {
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
     border-radius: 8px;
+    padding-left: 20px;
 }
 
 [data-theme="grifinoria"] .selected {
@@ -1565,6 +1562,107 @@ header {
 
 .start-quiz-btn:hover {
     opacity: 0.9;
+}
+
+#acessoRestrito {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.acessoRestrito-content {
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.acessoRestrito-text {
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.acessoRestrito-content i {
+    color: red;
+}
+
+.acessoRestrito-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.acessoRestrito-buttons button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    position: relative;
+}
+
+.btn-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 2px;
+    display: block;
+}
+
+#btnForum {
+    background-color: #b84c4c;
+    color: white;
+}
+
+#btnCentral {
+    background-color: #54aeba;
+    color: white;
+}
+
+.acessoRestrito-buttons button:active {
+    transform: scale(0.98);
+}
+
+#btnCentral:hover {
+    background-color: #499aa4;
+}
+
+#btnForum:hover {
+    background-color: #9c3d3d;
+}
+
+.acessoRestrito-buttons i {
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
     </style>
@@ -2793,6 +2891,7 @@ document.addEventListener("keydown", function(event) {
 
 (function () {
     const forumURL = "https://www.policiarcc.com/f276-efe-central-de-aulas";
+    const forumPrincipal = "https://www.policiarcc.com/forum";
     const acessoToken = "acessoPermitido";
 
     function getCookie(nome) {
@@ -2813,17 +2912,52 @@ document.addEventListener("keydown", function(event) {
         document.cookie = nome + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 
+    function exibirAcessoRestrito() {
+        const modal = document.createElement("div");
+        modal.id = "acessoRestrito";
+        modal.innerHTML = `
+            <div class="acessoRestrito-content">
+                <div class="acessoRestrito-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <p class="acessoRestrito-text">
+                    Você acessou a Central de outro lugar.<br>
+                    Deseja ir ao subfórum de professores?
+                </p>
+                <div class="acessoRestrito-buttons">
+    <button id="btnForum">
+        <i class="far fa-times-circle"></i>
+        <span class="btn-desc">Início do fórum</span>
+    </button>
+    <button id="btnCentral">
+        <i class="fas fa-check"></i>
+        <span class="btn-desc">Subfórum prof</span>
+    </button>
+</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById("btnForum").addEventListener("click", () => {
+            window.location.href = forumPrincipal;
+        });
+
+        document.getElementById("btnCentral").addEventListener("click", () => {
+            window.location.href = forumURL;
+        });
+    }
+
     if (document.referrer.includes("policiarcc.com")) {
         setCookie(acessoToken, "true", 1);
     }
 
     if (getCookie(acessoToken) !== "true") {
-        document.body.innerHTML = "<h1>Acesso negado!</h1><p>Redirecionando para o subfórum dos professores...</p>";
-        window.location.href = 'https://www.policiarcc.com/f276-efe-central-de-aulas';
+        exibirAcessoRestrito();
     } else {
         deletarCookie(acessoToken);
     }
 })();
+
 
         document.onkeydown = bloquearTeclas;
 
@@ -2890,6 +3024,7 @@ const btnConfig = document.querySelector('.btn-config i');
 btnConfig.addEventListener('click', () => {
     btnConfig.classList.toggle('rotated');
 });
+
 function toggleHogwartsSubThemes() {
     const subOptions = document.querySelector('.hogwarts-sub-options');
     subOptions.style.display = subOptions.style.display === 'block' ? 'none' : 'block';
