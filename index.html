@@ -555,7 +555,7 @@
         .tema-item {
             display: flex;
             align-items: center;
-            padding-right: 8px;
+            padding-right: 10px;
             gap: 10px;
             padding: 8px 9px;
             margin: 6px 0;
@@ -3040,6 +3040,7 @@
             const savedTheme = localStorage.getItem('theme') || 'new';
             document.body.setAttribute('data-theme', savedTheme);
             updateThemeIndicator(savedTheme);
+            updateThemeIndicator('hogwarts');
         }
 
         function selectTheme(theme) {
@@ -3329,6 +3330,7 @@
             selectTheme(house);
             document.getElementById('hat-quiz')?.remove();
             document.getElementById('hat-confirm')?.remove();
+            updateThemeIndicator('hogwarts');
             toggleSettings();
         }
 
