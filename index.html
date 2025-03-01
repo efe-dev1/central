@@ -856,7 +856,7 @@
         }
 
         .tema-preview.harry-potter::before {
-            content: "\f530";
+            content: "\f6df";
             font-size: 24px;
             filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
         }
@@ -1727,6 +1727,18 @@
             font-weight: bold;
             padding-left: 7px;
             display: none;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            50% { transform: translateX(3px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0); }
+        }
+
+        .tema-preview.harry-potter:hover::before {
+            animation: shake 0.3s ease-in-out;
         }
 
         .tema-preview.harry-potter.grifinoria {
